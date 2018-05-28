@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtContractTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtContractTask" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="PM_ID" property="pmId" jdbcType="BIGINT" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="VARCHAR" />
+    <result column="ZXTMC" property="zxtmc" jdbcType="VARCHAR" />
+    <result column="CPZXT" property="cpzxt" jdbcType="BIGINT" />
+    <result column="CPMC" property="cpmc" jdbcType="VARCHAR" />
+    <result column="CPXX" property="cpxx" jdbcType="BIGINT" />
+    <result column="MX" property="mx" jdbcType="VARCHAR" />
+    <result column="CREATOR" property="creator" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OPERATOR" property="operator" jdbcType="BIGINT" />
+    <result column="OPERATOR_TIME" property="operatorTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtContractTask" extends="BaseResultMap" >
+    <result column="BZ" property="bz" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, C_ID, PM_ID, SERIAL_NO, ZXTMC, CPZXT, CPMC, CPXX, MX, CREATOR, CREATE_TIME, OPERATOR, 
+    OPERATOR_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    BZ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.ET_CONTRACT_TASK
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_CONTRACT_TASK
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtContractTask" >
+    insert into dbo.ET_CONTRACT_TASK (ID, C_ID, PM_ID, SERIAL_NO, 
+      ZXTMC, CPZXT, CPMC, 
+      CPXX, MX, CREATOR, CREATE_TIME, 
+      OPERATOR, OPERATOR_TIME, BZ
+      )
+    values (#{id,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{pmId,jdbcType=BIGINT}, #{serialNo,jdbcType=VARCHAR}, 
+      #{zxtmc,jdbcType=VARCHAR}, #{cpzxt,jdbcType=BIGINT}, #{cpmc,jdbcType=VARCHAR}, 
+      #{cpxx,jdbcType=BIGINT}, #{mx,jdbcType=VARCHAR}, #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=BIGINT}, #{operatorTime,jdbcType=TIMESTAMP}, #{bz,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtContractTask" >
+    insert into mapping.ET_CONTRACT_TASK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="pmId != null" >
+        PM_ID,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="zxtmc != null" >
+        ZXTMC,
+      </if>
+      <if test="cpzxt != null" >
+        CPZXT,
+      </if>
+      <if test="cpmc != null" >
+        CPMC,
+      </if>
+      <if test="cpxx != null" >
+        CPXX,
+      </if>
+      <if test="mx != null" >
+        MX,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="operator != null" >
+        OPERATOR,
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME,
+      </if>
+      <if test="bz != null" >
+        BZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zxtmc != null" >
+        #{zxtmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpzxt != null" >
+        #{cpzxt,jdbcType=BIGINT},
+      </if>
+      <if test="cpmc != null" >
+        #{cpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpxx != null" >
+        #{cpxx,jdbcType=BIGINT},
+      </if>
+      <if test="mx != null" >
+        #{mx,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtContractTask" >
+    update mapping.ET_CONTRACT_TASK
+    <set >
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        PM_ID = #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zxtmc != null" >
+        ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpzxt != null" >
+        CPZXT = #{cpzxt,jdbcType=BIGINT},
+      </if>
+      <if test="cpmc != null" >
+        CPMC = #{cpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cpxx != null" >
+        CPXX = #{cpxx,jdbcType=BIGINT},
+      </if>
+      <if test="mx != null" >
+        MX = #{mx,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bz != null" >
+        BZ = #{bz,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.EtContractTask" >
+    update dbo.ET_CONTRACT_TASK
+    set C_ID = #{cId,jdbcType=BIGINT},
+      PM_ID = #{pmId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      CPZXT = #{cpzxt,jdbcType=BIGINT},
+      CPMC = #{cpmc,jdbcType=VARCHAR},
+      CPXX = #{cpxx,jdbcType=BIGINT},
+      MX = #{mx,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      BZ = #{bz,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtContractTask" >
+    update dbo.ET_CONTRACT_TASK
+    set C_ID = #{cId,jdbcType=BIGINT},
+      PM_ID = #{pmId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      CPZXT = #{cpzxt,jdbcType=BIGINT},
+      CPMC = #{cpmc,jdbcType=VARCHAR},
+      CPXX = #{cpxx,jdbcType=BIGINT},
+      MX = #{mx,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysDictInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysDictInfo" >
+    <id column="DICT_CODE" property="dictCode" jdbcType="VARCHAR" />
+    <id column="DICT_VALUE" property="dictValue" jdbcType="VARCHAR" />
+    <result column="DICT_LABEL" property="dictLabel" jdbcType="VARCHAR" />
+    <result column="DICT_SORT" property="dictSort" jdbcType="VARCHAR" />
+    <result column="DICT_DESC" property="dictDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DICT_CODE, DICT_VALUE, DICT_LABEL, DICT_SORT, DICT_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_DICT_INFO
+    where DICT_CODE = #{dictCode,jdbcType=VARCHAR}
+      and DICT_VALUE = #{dictValue,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from dbo.SYS_DICT_INFO
+    where DICT_CODE = #{dictCode,jdbcType=VARCHAR}
+      and DICT_VALUE = #{dictValue,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysDictInfo" >
+    insert into dbo.SYS_DICT_INFO (DICT_CODE, DICT_VALUE, DICT_LABEL, 
+      DICT_SORT, DICT_DESC)
+    values (#{dictCode,jdbcType=VARCHAR}, #{dictValue,jdbcType=VARCHAR}, #{dictLabel,jdbcType=VARCHAR}, 
+      #{dictSort,jdbcType=VARCHAR}, #{dictDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysDictInfo" >
+    insert into mapping.SYS_DICT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dictCode != null" >
+        DICT_CODE,
+      </if>
+      <if test="dictValue != null" >
+        DICT_VALUE,
+      </if>
+      <if test="dictLabel != null" >
+        DICT_LABEL,
+      </if>
+      <if test="dictSort != null" >
+        DICT_SORT,
+      </if>
+      <if test="dictDesc != null" >
+        DICT_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dictCode != null" >
+        #{dictCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictValue != null" >
+        #{dictValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictLabel != null" >
+        #{dictLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="dictSort != null" >
+        #{dictSort,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDesc != null" >
+        #{dictDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysDictInfo" >
+    update mapping.SYS_DICT_INFO
+    <set >
+      <if test="dictLabel != null" >
+        DICT_LABEL = #{dictLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="dictSort != null" >
+        DICT_SORT = #{dictSort,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDesc != null" >
+        DICT_DESC = #{dictDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DICT_CODE = #{dictCode,jdbcType=VARCHAR}
+      and DICT_VALUE = #{dictValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysDictInfo" >
+    update dbo.SYS_DICT_INFO
+    set DICT_LABEL = #{dictLabel,jdbcType=VARCHAR},
+      DICT_SORT = #{dictSort,jdbcType=VARCHAR},
+      DICT_DESC = #{dictDesc,jdbcType=VARCHAR}
+    where DICT_CODE = #{dictCode,jdbcType=VARCHAR}
+      and DICT_VALUE = #{dictValue,jdbcType=VARCHAR}
+  </update>
+</mapper>

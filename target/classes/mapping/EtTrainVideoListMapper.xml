@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtTrainVideoListMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtTrainVideoList" >
+    <result column="ID" property="id" jdbcType="BIGINT" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="PM_ID" property="pmId" jdbcType="BIGINT" />
+    <result column="PD_ID" property="pdId" jdbcType="BIGINT" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="VIDEO_NAME" property="videoName" jdbcType="VARCHAR" />
+    <result column="VIDEO_TIME" property="videoTime" jdbcType="TIME" />
+    <result column="NUM" property="num" jdbcType="INTEGER" />
+    <result column="OPEN_ID" property="openId" jdbcType="VARCHAR" />
+    <result column="VIDEO_ID" property="videoId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtTrainVideoList" extends="BaseResultMap" >
+    <result column="VIDEO_PATH" property="videoPath" jdbcType="LONGVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    VIDEO_PATH, REMARK
+  </sql>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtTrainVideoList" >
+    insert into dbo.ET_TRAIN_VIDEO_LIST (ID, C_ID, PM_ID, PD_ID, 
+      USER_ID, VIDEO_NAME, VIDEO_TIME, 
+      NUM, OPEN_ID, VIDEO_ID, 
+      VIDEO_PATH, REMARK)
+    values (#{id,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{pmId,jdbcType=BIGINT}, #{pdId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=VARCHAR}, #{videoName,jdbcType=VARCHAR}, #{videoTime,jdbcType=TIME}, 
+      #{num,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{videoId,jdbcType=BIGINT}, 
+      #{videoPath,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtTrainVideoList" >
+    insert into mapping.ET_TRAIN_VIDEO_LIST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="pmId != null" >
+        PM_ID,
+      </if>
+      <if test="pdId != null" >
+        PD_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="videoName != null" >
+        VIDEO_NAME,
+      </if>
+      <if test="videoTime != null" >
+        VIDEO_TIME,
+      </if>
+      <if test="num != null" >
+        NUM,
+      </if>
+      <if test="openId != null" >
+        OPEN_ID,
+      </if>
+      <if test="videoId != null" >
+        VIDEO_ID,
+      </if>
+      <if test="videoPath != null" >
+        VIDEO_PATH,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="pdId != null" >
+        #{pdId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoName != null" >
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        #{videoTime,jdbcType=TIME},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoId != null" >
+        #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="videoPath != null" >
+        #{videoPath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

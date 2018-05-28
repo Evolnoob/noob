@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.PmisCustomerInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.PmisCustomerInformation" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PY" property="py" jdbcType="VARCHAR" />
+    <result column="KHLB" property="khlb" jdbcType="INTEGER" />
+    <result column="KHLX" property="khlx" jdbcType="VARCHAR" />
+    <result column="QYXX" property="qyxx" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="SFCJ" property="sfcj" jdbcType="VARCHAR" />
+    <result column="YYLX" property="yylx" jdbcType="VARCHAR" />
+    <result column="MZL" property="mzl" jdbcType="BIGINT" />
+    <result column="CWS" property="cws" jdbcType="BIGINT" />
+    <result column="YYSL" property="yysl" jdbcType="BIGINT" />
+    <result column="FWJGS" property="fwjgs" jdbcType="BIGINT" />
+    <result column="GSGM" property="gsgm" jdbcType="VARCHAR" />
+    <result column="SSGS" property="ssgs" jdbcType="VARCHAR" />
+    <result column="SSJG" property="ssjg" jdbcType="VARCHAR" />
+    <result column="YYDJ" property="yydj" jdbcType="VARCHAR" />
+    <result column="YYGM" property="yygm" jdbcType="VARCHAR" />
+    <result column="YYBJDJ" property="yybjdj" jdbcType="VARCHAR" />
+    <result column="KHDZ" property="khdz" jdbcType="VARCHAR" />
+    <result column="YZBM" property="yzbm" jdbcType="VARCHAR" />
+    <result column="XXKZ" property="xxkz" jdbcType="VARCHAR" />
+    <result column="ZGYZ" property="zgyz" jdbcType="VARCHAR" />
+    <result column="SFSZKHJL" property="sfszkhjl" jdbcType="VARCHAR" />
+    <result column="KHJL" property="khjl" jdbcType="VARCHAR" />
+    <result column="SYCPTX" property="sycptx" jdbcType="VARCHAR" />
+    <result column="FWTRY" property="fwtry" jdbcType="VARCHAR" />
+    <result column="ZDKHBZ" property="zdkhbz" jdbcType="VARCHAR" />
+    <result column="LXR" property="lxr" jdbcType="VARCHAR" />
+    <result column="LXFS" property="lxfs" jdbcType="VARCHAR" />
+    <result column="GLGS" property="glgs" jdbcType="VARCHAR" />
+    <result column="GXR" property="gxr" jdbcType="VARCHAR" />
+    <result column="GXSJ" property="gxsj" jdbcType="VARCHAR" />
+    <result column="DJR" property="djr" jdbcType="VARCHAR" />
+    <result column="DJSJ" property="djsj" jdbcType="VARCHAR" />
+    <result column="ZT" property="zt" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.PmisCustomerInformation" extends="BaseResultMap" >
+    <result column="ZYYW" property="zyyw" jdbcType="LONGVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CODE, NAME, PY, KHLB, KHLX, QYXX, CITY, SFCJ, YYLX, MZL, CWS, YYSL, FWJGS, GSGM, 
+    SSGS, SSJG, YYDJ, YYGM, YYBJDJ, KHDZ, YZBM, XXKZ, ZGYZ, SFSZKHJL, KHJL, SYCPTX, FWTRY, 
+    ZDKHBZ, LXR, LXFS, GLGS, GXR, GXSJ, DJR, DJSJ, ZT
+  </sql>
+  <sql id="Blob_Column_List" >
+    ZYYW, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.PMIS_CUSTOMER_INFORMATION
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.PMIS_CUSTOMER_INFORMATION
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.PmisCustomerInformation" >
+    insert into dbo.PMIS_CUSTOMER_INFORMATION (ID, CODE, NAME, 
+      PY, KHLB, KHLX, QYXX, 
+      CITY, SFCJ, YYLX, MZL, 
+      CWS, YYSL, FWJGS, GSGM, 
+      SSGS, SSJG, YYDJ, YYGM, 
+      YYBJDJ, KHDZ, YZBM, 
+      XXKZ, ZGYZ, SFSZKHJL, 
+      KHJL, SYCPTX, FWTRY, 
+      ZDKHBZ, LXR, LXFS, 
+      GLGS, GXR, GXSJ, DJR, 
+      DJSJ, ZT, ZYYW, 
+      REMARK)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{py,jdbcType=VARCHAR}, #{khlb,jdbcType=INTEGER}, #{khlx,jdbcType=VARCHAR}, #{qyxx,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{sfcj,jdbcType=VARCHAR}, #{yylx,jdbcType=VARCHAR}, #{mzl,jdbcType=BIGINT}, 
+      #{cws,jdbcType=BIGINT}, #{yysl,jdbcType=BIGINT}, #{fwjgs,jdbcType=BIGINT}, #{gsgm,jdbcType=VARCHAR}, 
+      #{ssgs,jdbcType=VARCHAR}, #{ssjg,jdbcType=VARCHAR}, #{yydj,jdbcType=VARCHAR}, #{yygm,jdbcType=VARCHAR}, 
+      #{yybjdj,jdbcType=VARCHAR}, #{khdz,jdbcType=VARCHAR}, #{yzbm,jdbcType=VARCHAR}, 
+      #{xxkz,jdbcType=VARCHAR}, #{zgyz,jdbcType=VARCHAR}, #{sfszkhjl,jdbcType=VARCHAR}, 
+      #{khjl,jdbcType=VARCHAR}, #{sycptx,jdbcType=VARCHAR}, #{fwtry,jdbcType=VARCHAR}, 
+      #{zdkhbz,jdbcType=VARCHAR}, #{lxr,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, 
+      #{glgs,jdbcType=VARCHAR}, #{gxr,jdbcType=VARCHAR}, #{gxsj,jdbcType=VARCHAR}, #{djr,jdbcType=VARCHAR}, 
+      #{djsj,jdbcType=VARCHAR}, #{zt,jdbcType=INTEGER}, #{zyyw,jdbcType=LONGVARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.PmisCustomerInformation" >
+    insert into mapping.PMIS_CUSTOMER_INFORMATION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="py != null" >
+        PY,
+      </if>
+      <if test="khlb != null" >
+        KHLB,
+      </if>
+      <if test="khlx != null" >
+        KHLX,
+      </if>
+      <if test="qyxx != null" >
+        QYXX,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="sfcj != null" >
+        SFCJ,
+      </if>
+      <if test="yylx != null" >
+        YYLX,
+      </if>
+      <if test="mzl != null" >
+        MZL,
+      </if>
+      <if test="cws != null" >
+        CWS,
+      </if>
+      <if test="yysl != null" >
+        YYSL,
+      </if>
+      <if test="fwjgs != null" >
+        FWJGS,
+      </if>
+      <if test="gsgm != null" >
+        GSGM,
+      </if>
+      <if test="ssgs != null" >
+        SSGS,
+      </if>
+      <if test="ssjg != null" >
+        SSJG,
+      </if>
+      <if test="yydj != null" >
+        YYDJ,
+      </if>
+      <if test="yygm != null" >
+        YYGM,
+      </if>
+      <if test="yybjdj != null" >
+        YYBJDJ,
+      </if>
+      <if test="khdz != null" >
+        KHDZ,
+      </if>
+      <if test="yzbm != null" >
+        YZBM,
+      </if>
+      <if test="xxkz != null" >
+        XXKZ,
+      </if>
+      <if test="zgyz != null" >
+        ZGYZ,
+      </if>
+      <if test="sfszkhjl != null" >
+        SFSZKHJL,
+      </if>
+      <if test="khjl != null" >
+        KHJL,
+      </if>
+      <if test="sycptx != null" >
+        SYCPTX,
+      </if>
+      <if test="fwtry != null" >
+        FWTRY,
+      </if>
+      <if test="zdkhbz != null" >
+        ZDKHBZ,
+      </if>
+      <if test="lxr != null" >
+        LXR,
+      </if>
+      <if test="lxfs != null" >
+        LXFS,
+      </if>
+      <if test="glgs != null" >
+        GLGS,
+      </if>
+      <if test="gxr != null" >
+        GXR,
+      </if>
+      <if test="gxsj != null" >
+        GXSJ,
+      </if>
+      <if test="djr != null" >
+        DJR,
+      </if>
+      <if test="djsj != null" >
+        DJSJ,
+      </if>
+      <if test="zt != null" >
+        ZT,
+      </if>
+      <if test="zyyw != null" >
+        ZYYW,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="py != null" >
+        #{py,jdbcType=VARCHAR},
+      </if>
+      <if test="khlb != null" >
+        #{khlb,jdbcType=INTEGER},
+      </if>
+      <if test="khlx != null" >
+        #{khlx,jdbcType=VARCHAR},
+      </if>
+      <if test="qyxx != null" >
+        #{qyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sfcj != null" >
+        #{sfcj,jdbcType=VARCHAR},
+      </if>
+      <if test="yylx != null" >
+        #{yylx,jdbcType=VARCHAR},
+      </if>
+      <if test="mzl != null" >
+        #{mzl,jdbcType=BIGINT},
+      </if>
+      <if test="cws != null" >
+        #{cws,jdbcType=BIGINT},
+      </if>
+      <if test="yysl != null" >
+        #{yysl,jdbcType=BIGINT},
+      </if>
+      <if test="fwjgs != null" >
+        #{fwjgs,jdbcType=BIGINT},
+      </if>
+      <if test="gsgm != null" >
+        #{gsgm,jdbcType=VARCHAR},
+      </if>
+      <if test="ssgs != null" >
+        #{ssgs,jdbcType=VARCHAR},
+      </if>
+      <if test="ssjg != null" >
+        #{ssjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yydj != null" >
+        #{yydj,jdbcType=VARCHAR},
+      </if>
+      <if test="yygm != null" >
+        #{yygm,jdbcType=VARCHAR},
+      </if>
+      <if test="yybjdj != null" >
+        #{yybjdj,jdbcType=VARCHAR},
+      </if>
+      <if test="khdz != null" >
+        #{khdz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        #{yzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxkz != null" >
+        #{xxkz,jdbcType=VARCHAR},
+      </if>
+      <if test="zgyz != null" >
+        #{zgyz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfszkhjl != null" >
+        #{sfszkhjl,jdbcType=VARCHAR},
+      </if>
+      <if test="khjl != null" >
+        #{khjl,jdbcType=VARCHAR},
+      </if>
+      <if test="sycptx != null" >
+        #{sycptx,jdbcType=VARCHAR},
+      </if>
+      <if test="fwtry != null" >
+        #{fwtry,jdbcType=VARCHAR},
+      </if>
+      <if test="zdkhbz != null" >
+        #{zdkhbz,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="glgs != null" >
+        #{glgs,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null" >
+        #{djr,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        #{djsj,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="zyyw != null" >
+        #{zyyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.PmisCustomerInformation" >
+    update mapping.PMIS_CUSTOMER_INFORMATION
+    <set >
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="py != null" >
+        PY = #{py,jdbcType=VARCHAR},
+      </if>
+      <if test="khlb != null" >
+        KHLB = #{khlb,jdbcType=INTEGER},
+      </if>
+      <if test="khlx != null" >
+        KHLX = #{khlx,jdbcType=VARCHAR},
+      </if>
+      <if test="qyxx != null" >
+        QYXX = #{qyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sfcj != null" >
+        SFCJ = #{sfcj,jdbcType=VARCHAR},
+      </if>
+      <if test="yylx != null" >
+        YYLX = #{yylx,jdbcType=VARCHAR},
+      </if>
+      <if test="mzl != null" >
+        MZL = #{mzl,jdbcType=BIGINT},
+      </if>
+      <if test="cws != null" >
+        CWS = #{cws,jdbcType=BIGINT},
+      </if>
+      <if test="yysl != null" >
+        YYSL = #{yysl,jdbcType=BIGINT},
+      </if>
+      <if test="fwjgs != null" >
+        FWJGS = #{fwjgs,jdbcType=BIGINT},
+      </if>
+      <if test="gsgm != null" >
+        GSGM = #{gsgm,jdbcType=VARCHAR},
+      </if>
+      <if test="ssgs != null" >
+        SSGS = #{ssgs,jdbcType=VARCHAR},
+      </if>
+      <if test="ssjg != null" >
+        SSJG = #{ssjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yydj != null" >
+        YYDJ = #{yydj,jdbcType=VARCHAR},
+      </if>
+      <if test="yygm != null" >
+        YYGM = #{yygm,jdbcType=VARCHAR},
+      </if>
+      <if test="yybjdj != null" >
+        YYBJDJ = #{yybjdj,jdbcType=VARCHAR},
+      </if>
+      <if test="khdz != null" >
+        KHDZ = #{khdz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        YZBM = #{yzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxkz != null" >
+        XXKZ = #{xxkz,jdbcType=VARCHAR},
+      </if>
+      <if test="zgyz != null" >
+        ZGYZ = #{zgyz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfszkhjl != null" >
+        SFSZKHJL = #{sfszkhjl,jdbcType=VARCHAR},
+      </if>
+      <if test="khjl != null" >
+        KHJL = #{khjl,jdbcType=VARCHAR},
+      </if>
+      <if test="sycptx != null" >
+        SYCPTX = #{sycptx,jdbcType=VARCHAR},
+      </if>
+      <if test="fwtry != null" >
+        FWTRY = #{fwtry,jdbcType=VARCHAR},
+      </if>
+      <if test="zdkhbz != null" >
+        ZDKHBZ = #{zdkhbz,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        LXR = #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        LXFS = #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="glgs != null" >
+        GLGS = #{glgs,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        GXR = #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        GXSJ = #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null" >
+        DJR = #{djr,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        DJSJ = #{djsj,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        ZT = #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="zyyw != null" >
+        ZYYW = #{zyyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.PmisCustomerInformation" >
+    update dbo.PMIS_CUSTOMER_INFORMATION
+    set CODE = #{code,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PY = #{py,jdbcType=VARCHAR},
+      KHLB = #{khlb,jdbcType=INTEGER},
+      KHLX = #{khlx,jdbcType=VARCHAR},
+      QYXX = #{qyxx,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      SFCJ = #{sfcj,jdbcType=VARCHAR},
+      YYLX = #{yylx,jdbcType=VARCHAR},
+      MZL = #{mzl,jdbcType=BIGINT},
+      CWS = #{cws,jdbcType=BIGINT},
+      YYSL = #{yysl,jdbcType=BIGINT},
+      FWJGS = #{fwjgs,jdbcType=BIGINT},
+      GSGM = #{gsgm,jdbcType=VARCHAR},
+      SSGS = #{ssgs,jdbcType=VARCHAR},
+      SSJG = #{ssjg,jdbcType=VARCHAR},
+      YYDJ = #{yydj,jdbcType=VARCHAR},
+      YYGM = #{yygm,jdbcType=VARCHAR},
+      YYBJDJ = #{yybjdj,jdbcType=VARCHAR},
+      KHDZ = #{khdz,jdbcType=VARCHAR},
+      YZBM = #{yzbm,jdbcType=VARCHAR},
+      XXKZ = #{xxkz,jdbcType=VARCHAR},
+      ZGYZ = #{zgyz,jdbcType=VARCHAR},
+      SFSZKHJL = #{sfszkhjl,jdbcType=VARCHAR},
+      KHJL = #{khjl,jdbcType=VARCHAR},
+      SYCPTX = #{sycptx,jdbcType=VARCHAR},
+      FWTRY = #{fwtry,jdbcType=VARCHAR},
+      ZDKHBZ = #{zdkhbz,jdbcType=VARCHAR},
+      LXR = #{lxr,jdbcType=VARCHAR},
+      LXFS = #{lxfs,jdbcType=VARCHAR},
+      GLGS = #{glgs,jdbcType=VARCHAR},
+      GXR = #{gxr,jdbcType=VARCHAR},
+      GXSJ = #{gxsj,jdbcType=VARCHAR},
+      DJR = #{djr,jdbcType=VARCHAR},
+      DJSJ = #{djsj,jdbcType=VARCHAR},
+      ZT = #{zt,jdbcType=INTEGER},
+      ZYYW = #{zyyw,jdbcType=LONGVARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.PmisCustomerInformation" >
+    update dbo.PMIS_CUSTOMER_INFORMATION
+    set CODE = #{code,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PY = #{py,jdbcType=VARCHAR},
+      KHLB = #{khlb,jdbcType=INTEGER},
+      KHLX = #{khlx,jdbcType=VARCHAR},
+      QYXX = #{qyxx,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      SFCJ = #{sfcj,jdbcType=VARCHAR},
+      YYLX = #{yylx,jdbcType=VARCHAR},
+      MZL = #{mzl,jdbcType=BIGINT},
+      CWS = #{cws,jdbcType=BIGINT},
+      YYSL = #{yysl,jdbcType=BIGINT},
+      FWJGS = #{fwjgs,jdbcType=BIGINT},
+      GSGM = #{gsgm,jdbcType=VARCHAR},
+      SSGS = #{ssgs,jdbcType=VARCHAR},
+      SSJG = #{ssjg,jdbcType=VARCHAR},
+      YYDJ = #{yydj,jdbcType=VARCHAR},
+      YYGM = #{yygm,jdbcType=VARCHAR},
+      YYBJDJ = #{yybjdj,jdbcType=VARCHAR},
+      KHDZ = #{khdz,jdbcType=VARCHAR},
+      YZBM = #{yzbm,jdbcType=VARCHAR},
+      XXKZ = #{xxkz,jdbcType=VARCHAR},
+      ZGYZ = #{zgyz,jdbcType=VARCHAR},
+      SFSZKHJL = #{sfszkhjl,jdbcType=VARCHAR},
+      KHJL = #{khjl,jdbcType=VARCHAR},
+      SYCPTX = #{sycptx,jdbcType=VARCHAR},
+      FWTRY = #{fwtry,jdbcType=VARCHAR},
+      ZDKHBZ = #{zdkhbz,jdbcType=VARCHAR},
+      LXR = #{lxr,jdbcType=VARCHAR},
+      LXFS = #{lxfs,jdbcType=VARCHAR},
+      GLGS = #{glgs,jdbcType=VARCHAR},
+      GXR = #{gxr,jdbcType=VARCHAR},
+      GXSJ = #{gxsj,jdbcType=VARCHAR},
+      DJR = #{djr,jdbcType=VARCHAR},
+      DJSJ = #{djsj,jdbcType=VARCHAR},
+      ZT = #{zt,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysSoftHardwareInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysSoftHardwareInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SH_CODE" property="shCode" jdbcType="VARCHAR" />
+    <result column="SH_NAME" property="shName" jdbcType="VARCHAR" />
+    <result column="SH_TYPE" property="shType" jdbcType="INTEGER" />
+    <result column="SH_BRAND" property="shBrand" jdbcType="VARCHAR" />
+    <result column="SH_BRAND_TYPE" property="shBrandType" jdbcType="VARCHAR" />
+    <result column="SH_BRAND_CONFIG" property="shBrandConfig" jdbcType="VARCHAR" />
+    <result column="SH_ENV_TYPE" property="shEnvType" jdbcType="VARCHAR" />
+    <result column="IS_PHOTO" property="isPhoto" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="LAST_UPDATOR" property="lastUpdator" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.SysSoftHardwareInfo" extends="BaseResultMap" >
+    <result column="SH_DESC" property="shDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SH_CODE, SH_NAME, SH_TYPE, SH_BRAND, SH_BRAND_TYPE, SH_BRAND_CONFIG, SH_ENV_TYPE, 
+    IS_PHOTO, STATUS, LAST_UPDATOR, LAST_UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    SH_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.SYS_SOFT_HARDWARE_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_SOFT_HARDWARE_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysSoftHardwareInfo" >
+    insert into dbo.SYS_SOFT_HARDWARE_INFO (ID, SH_CODE, SH_NAME, 
+      SH_TYPE, SH_BRAND, SH_BRAND_TYPE, 
+      SH_BRAND_CONFIG, SH_ENV_TYPE, IS_PHOTO, 
+      STATUS, LAST_UPDATOR, LAST_UPDATE_TIME, 
+      SH_DESC)
+    values (#{id,jdbcType=BIGINT}, #{shCode,jdbcType=VARCHAR}, #{shName,jdbcType=VARCHAR}, 
+      #{shType,jdbcType=INTEGER}, #{shBrand,jdbcType=VARCHAR}, #{shBrandType,jdbcType=VARCHAR}, 
+      #{shBrandConfig,jdbcType=VARCHAR}, #{shEnvType,jdbcType=VARCHAR}, #{isPhoto,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{lastUpdator,jdbcType=BIGINT}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{shDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysSoftHardwareInfo" >
+    insert into mapping.SYS_SOFT_HARDWARE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="shCode != null" >
+        SH_CODE,
+      </if>
+      <if test="shName != null" >
+        SH_NAME,
+      </if>
+      <if test="shType != null" >
+        SH_TYPE,
+      </if>
+      <if test="shBrand != null" >
+        SH_BRAND,
+      </if>
+      <if test="shBrandType != null" >
+        SH_BRAND_TYPE,
+      </if>
+      <if test="shBrandConfig != null" >
+        SH_BRAND_CONFIG,
+      </if>
+      <if test="shEnvType != null" >
+        SH_ENV_TYPE,
+      </if>
+      <if test="isPhoto != null" >
+        IS_PHOTO,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="shDesc != null" >
+        SH_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shCode != null" >
+        #{shCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shName != null" >
+        #{shName,jdbcType=VARCHAR},
+      </if>
+      <if test="shType != null" >
+        #{shType,jdbcType=INTEGER},
+      </if>
+      <if test="shBrand != null" >
+        #{shBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="shBrandType != null" >
+        #{shBrandType,jdbcType=VARCHAR},
+      </if>
+      <if test="shBrandConfig != null" >
+        #{shBrandConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="shEnvType != null" >
+        #{shEnvType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPhoto != null" >
+        #{isPhoto,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shDesc != null" >
+        #{shDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysSoftHardwareInfo" >
+    update mapping.SYS_SOFT_HARDWARE_INFO
+    <set >
+      <if test="shCode != null" >
+        SH_CODE = #{shCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shName != null" >
+        SH_NAME = #{shName,jdbcType=VARCHAR},
+      </if>
+      <if test="shType != null" >
+        SH_TYPE = #{shType,jdbcType=INTEGER},
+      </if>
+      <if test="shBrand != null" >
+        SH_BRAND = #{shBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="shBrandType != null" >
+        SH_BRAND_TYPE = #{shBrandType,jdbcType=VARCHAR},
+      </if>
+      <if test="shBrandConfig != null" >
+        SH_BRAND_CONFIG = #{shBrandConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="shEnvType != null" >
+        SH_ENV_TYPE = #{shEnvType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPhoto != null" >
+        IS_PHOTO = #{isPhoto,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shDesc != null" >
+        SH_DESC = #{shDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.SysSoftHardwareInfo" >
+    update dbo.SYS_SOFT_HARDWARE_INFO
+    set SH_CODE = #{shCode,jdbcType=VARCHAR},
+      SH_NAME = #{shName,jdbcType=VARCHAR},
+      SH_TYPE = #{shType,jdbcType=INTEGER},
+      SH_BRAND = #{shBrand,jdbcType=VARCHAR},
+      SH_BRAND_TYPE = #{shBrandType,jdbcType=VARCHAR},
+      SH_BRAND_CONFIG = #{shBrandConfig,jdbcType=VARCHAR},
+      SH_ENV_TYPE = #{shEnvType,jdbcType=VARCHAR},
+      IS_PHOTO = #{isPhoto,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      SH_DESC = #{shDesc,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysSoftHardwareInfo" >
+    update dbo.SYS_SOFT_HARDWARE_INFO
+    set SH_CODE = #{shCode,jdbcType=VARCHAR},
+      SH_NAME = #{shName,jdbcType=VARCHAR},
+      SH_TYPE = #{shType,jdbcType=INTEGER},
+      SH_BRAND = #{shBrand,jdbcType=VARCHAR},
+      SH_BRAND_TYPE = #{shBrandType,jdbcType=VARCHAR},
+      SH_BRAND_CONFIG = #{shBrandConfig,jdbcType=VARCHAR},
+      SH_ENV_TYPE = #{shEnvType,jdbcType=VARCHAR},
+      IS_PHOTO = #{isPhoto,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

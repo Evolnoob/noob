@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysParamsMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysParams" >
+    <result column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PARAM_NAME" property="paramName" jdbcType="VARCHAR" />
+    <result column="PARAM_VALUE" property="paramValue" jdbcType="VARCHAR" />
+    <result column="PARAM_DESC" property="paramDesc" jdbcType="VARCHAR" />
+    <result column="IS_STOP" property="isStop" jdbcType="INTEGER" />
+    <result column="PARAM_TYPE" property="paramType" jdbcType="INTEGER" />
+    <result column="ORDER_VALUE" property="orderValue" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysParams" >
+    insert into dbo.SYS_PARAMS (ID, PARAM_NAME, PARAM_VALUE, 
+      PARAM_DESC, IS_STOP, PARAM_TYPE, 
+      ORDER_VALUE)
+    values (#{id,jdbcType=BIGINT}, #{paramName,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR}, 
+      #{paramDesc,jdbcType=VARCHAR}, #{isStop,jdbcType=INTEGER}, #{paramType,jdbcType=INTEGER}, 
+      #{orderValue,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysParams" >
+    insert into mapping.SYS_PARAMS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="paramName != null" >
+        PARAM_NAME,
+      </if>
+      <if test="paramValue != null" >
+        PARAM_VALUE,
+      </if>
+      <if test="paramDesc != null" >
+        PARAM_DESC,
+      </if>
+      <if test="isStop != null" >
+        IS_STOP,
+      </if>
+      <if test="paramType != null" >
+        PARAM_TYPE,
+      </if>
+      <if test="orderValue != null" >
+        ORDER_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="paramName != null" >
+        #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramValue != null" >
+        #{paramValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramDesc != null" >
+        #{paramDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isStop != null" >
+        #{isStop,jdbcType=INTEGER},
+      </if>
+      <if test="paramType != null" >
+        #{paramType,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

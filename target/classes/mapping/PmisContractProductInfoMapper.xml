@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.PmisContractProductInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.PmisContractProductInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="KHXX" property="khxx" jdbcType="BIGINT" />
+    <result column="HTCPLB" property="htcplb" jdbcType="INTEGER" />
+    <result column="FBJELX" property="fbjelx" jdbcType="BIGINT" />
+    <result column="CPDLMC" property="cpdlmc" jdbcType="VARCHAR" />
+    <result column="ZXTMC" property="zxtmc" jdbcType="VARCHAR" />
+    <result column="ZHTXX" property="zhtxx" jdbcType="BIGINT" />
+    <result column="HTXX" property="htxx" jdbcType="BIGINT" />
+    <result column="XMLCB" property="xmlcb" jdbcType="BIGINT" />
+    <result column="XMFQJH" property="xmfqjh" jdbcType="BIGINT" />
+    <result column="HTMK" property="htmk" jdbcType="BIGINT" />
+    <result column="HTYHF" property="htyhf" jdbcType="BIGINT" />
+    <result column="CPXX" property="cpxx" jdbcType="BIGINT" />
+    <result column="CPZXT" property="cpzxt" jdbcType="VARCHAR" />
+    <result column="SJCP" property="sjcp" jdbcType="VARCHAR" />
+    <result column="CPJZJ" property="cpjzj" jdbcType="VARCHAR" />
+    <result column="BJXS" property="bjxs" jdbcType="VARCHAR" />
+    <result column="ZT" property="zt" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.PmisContractProductInfo" extends="BaseResultMap" >
+    <result column="CPMC" property="cpmc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, KHXX, HTCPLB, FBJELX, CPDLMC, ZXTMC, ZHTXX, HTXX, XMLCB, XMFQJH, HTMK, HTYHF, 
+    CPXX, CPZXT, SJCP, CPJZJ, BJXS, ZT
+  </sql>
+  <sql id="Blob_Column_List" >
+    CPMC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.PMIS_CONTRACT_PRODUCT_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.PMIS_CONTRACT_PRODUCT_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.PmisContractProductInfo" >
+    insert into dbo.PMIS_CONTRACT_PRODUCT_INFO (ID, KHXX, HTCPLB, 
+      FBJELX, CPDLMC, ZXTMC, 
+      ZHTXX, HTXX, XMLCB, XMFQJH, 
+      HTMK, HTYHF, CPXX, CPZXT, 
+      SJCP, CPJZJ, BJXS, 
+      ZT, CPMC)
+    values (#{id,jdbcType=BIGINT}, #{khxx,jdbcType=BIGINT}, #{htcplb,jdbcType=INTEGER}, 
+      #{fbjelx,jdbcType=BIGINT}, #{cpdlmc,jdbcType=VARCHAR}, #{zxtmc,jdbcType=VARCHAR}, 
+      #{zhtxx,jdbcType=BIGINT}, #{htxx,jdbcType=BIGINT}, #{xmlcb,jdbcType=BIGINT}, #{xmfqjh,jdbcType=BIGINT}, 
+      #{htmk,jdbcType=BIGINT}, #{htyhf,jdbcType=BIGINT}, #{cpxx,jdbcType=BIGINT}, #{cpzxt,jdbcType=VARCHAR}, 
+      #{sjcp,jdbcType=VARCHAR}, #{cpjzj,jdbcType=VARCHAR}, #{bjxs,jdbcType=VARCHAR}, 
+      #{zt,jdbcType=INTEGER}, #{cpmc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.PmisContractProductInfo" >
+    insert into mapping.PMIS_CONTRACT_PRODUCT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="khxx != null" >
+        KHXX,
+      </if>
+      <if test="htcplb != null" >
+        HTCPLB,
+      </if>
+      <if test="fbjelx != null" >
+        FBJELX,
+      </if>
+      <if test="cpdlmc != null" >
+        CPDLMC,
+      </if>
+      <if test="zxtmc != null" >
+        ZXTMC,
+      </if>
+      <if test="zhtxx != null" >
+        ZHTXX,
+      </if>
+      <if test="htxx != null" >
+        HTXX,
+      </if>
+      <if test="xmlcb != null" >
+        XMLCB,
+      </if>
+      <if test="xmfqjh != null" >
+        XMFQJH,
+      </if>
+      <if test="htmk != null" >
+        HTMK,
+      </if>
+      <if test="htyhf != null" >
+        HTYHF,
+      </if>
+      <if test="cpxx != null" >
+        CPXX,
+      </if>
+      <if test="cpzxt != null" >
+        CPZXT,
+      </if>
+      <if test="sjcp != null" >
+        SJCP,
+      </if>
+      <if test="cpjzj != null" >
+        CPJZJ,
+      </if>
+      <if test="bjxs != null" >
+        BJXS,
+      </if>
+      <if test="zt != null" >
+        ZT,
+      </if>
+      <if test="cpmc != null" >
+        CPMC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="khxx != null" >
+        #{khxx,jdbcType=BIGINT},
+      </if>
+      <if test="htcplb != null" >
+        #{htcplb,jdbcType=INTEGER},
+      </if>
+      <if test="fbjelx != null" >
+        #{fbjelx,jdbcType=BIGINT},
+      </if>
+      <if test="cpdlmc != null" >
+        #{cpdlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxtmc != null" >
+        #{zxtmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zhtxx != null" >
+        #{zhtxx,jdbcType=BIGINT},
+      </if>
+      <if test="htxx != null" >
+        #{htxx,jdbcType=BIGINT},
+      </if>
+      <if test="xmlcb != null" >
+        #{xmlcb,jdbcType=BIGINT},
+      </if>
+      <if test="xmfqjh != null" >
+        #{xmfqjh,jdbcType=BIGINT},
+      </if>
+      <if test="htmk != null" >
+        #{htmk,jdbcType=BIGINT},
+      </if>
+      <if test="htyhf != null" >
+        #{htyhf,jdbcType=BIGINT},
+      </if>
+      <if test="cpxx != null" >
+        #{cpxx,jdbcType=BIGINT},
+      </if>
+      <if test="cpzxt != null" >
+        #{cpzxt,jdbcType=VARCHAR},
+      </if>
+      <if test="sjcp != null" >
+        #{sjcp,jdbcType=VARCHAR},
+      </if>
+      <if test="cpjzj != null" >
+        #{cpjzj,jdbcType=VARCHAR},
+      </if>
+      <if test="bjxs != null" >
+        #{bjxs,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="cpmc != null" >
+        #{cpmc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.PmisContractProductInfo" >
+    update mapping.PMIS_CONTRACT_PRODUCT_INFO
+    <set >
+      <if test="khxx != null" >
+        KHXX = #{khxx,jdbcType=BIGINT},
+      </if>
+      <if test="htcplb != null" >
+        HTCPLB = #{htcplb,jdbcType=INTEGER},
+      </if>
+      <if test="fbjelx != null" >
+        FBJELX = #{fbjelx,jdbcType=BIGINT},
+      </if>
+      <if test="cpdlmc != null" >
+        CPDLMC = #{cpdlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxtmc != null" >
+        ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zhtxx != null" >
+        ZHTXX = #{zhtxx,jdbcType=BIGINT},
+      </if>
+      <if test="htxx != null" >
+        HTXX = #{htxx,jdbcType=BIGINT},
+      </if>
+      <if test="xmlcb != null" >
+        XMLCB = #{xmlcb,jdbcType=BIGINT},
+      </if>
+      <if test="xmfqjh != null" >
+        XMFQJH = #{xmfqjh,jdbcType=BIGINT},
+      </if>
+      <if test="htmk != null" >
+        HTMK = #{htmk,jdbcType=BIGINT},
+      </if>
+      <if test="htyhf != null" >
+        HTYHF = #{htyhf,jdbcType=BIGINT},
+      </if>
+      <if test="cpxx != null" >
+        CPXX = #{cpxx,jdbcType=BIGINT},
+      </if>
+      <if test="cpzxt != null" >
+        CPZXT = #{cpzxt,jdbcType=VARCHAR},
+      </if>
+      <if test="sjcp != null" >
+        SJCP = #{sjcp,jdbcType=VARCHAR},
+      </if>
+      <if test="cpjzj != null" >
+        CPJZJ = #{cpjzj,jdbcType=VARCHAR},
+      </if>
+      <if test="bjxs != null" >
+        BJXS = #{bjxs,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        ZT = #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="cpmc != null" >
+        CPMC = #{cpmc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.PmisContractProductInfo" >
+    update dbo.PMIS_CONTRACT_PRODUCT_INFO
+    set KHXX = #{khxx,jdbcType=BIGINT},
+      HTCPLB = #{htcplb,jdbcType=INTEGER},
+      FBJELX = #{fbjelx,jdbcType=BIGINT},
+      CPDLMC = #{cpdlmc,jdbcType=VARCHAR},
+      ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      ZHTXX = #{zhtxx,jdbcType=BIGINT},
+      HTXX = #{htxx,jdbcType=BIGINT},
+      XMLCB = #{xmlcb,jdbcType=BIGINT},
+      XMFQJH = #{xmfqjh,jdbcType=BIGINT},
+      HTMK = #{htmk,jdbcType=BIGINT},
+      HTYHF = #{htyhf,jdbcType=BIGINT},
+      CPXX = #{cpxx,jdbcType=BIGINT},
+      CPZXT = #{cpzxt,jdbcType=VARCHAR},
+      SJCP = #{sjcp,jdbcType=VARCHAR},
+      CPJZJ = #{cpjzj,jdbcType=VARCHAR},
+      BJXS = #{bjxs,jdbcType=VARCHAR},
+      ZT = #{zt,jdbcType=INTEGER},
+      CPMC = #{cpmc,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.PmisContractProductInfo" >
+    update dbo.PMIS_CONTRACT_PRODUCT_INFO
+    set KHXX = #{khxx,jdbcType=BIGINT},
+      HTCPLB = #{htcplb,jdbcType=INTEGER},
+      FBJELX = #{fbjelx,jdbcType=BIGINT},
+      CPDLMC = #{cpdlmc,jdbcType=VARCHAR},
+      ZXTMC = #{zxtmc,jdbcType=VARCHAR},
+      ZHTXX = #{zhtxx,jdbcType=BIGINT},
+      HTXX = #{htxx,jdbcType=BIGINT},
+      XMLCB = #{xmlcb,jdbcType=BIGINT},
+      XMFQJH = #{xmfqjh,jdbcType=BIGINT},
+      HTMK = #{htmk,jdbcType=BIGINT},
+      HTYHF = #{htyhf,jdbcType=BIGINT},
+      CPXX = #{cpxx,jdbcType=BIGINT},
+      CPZXT = #{cpzxt,jdbcType=VARCHAR},
+      SJCP = #{sjcp,jdbcType=VARCHAR},
+      CPJZJ = #{cpjzj,jdbcType=VARCHAR},
+      BJXS = #{bjxs,jdbcType=VARCHAR},
+      ZT = #{zt,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

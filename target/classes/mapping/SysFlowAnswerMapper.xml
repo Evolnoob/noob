@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysFlowAnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysFlowAnswer" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="QUES_ID" property="quesId" jdbcType="BIGINT" />
+    <result column="ANSWER_PID" property="answerPid" jdbcType="BIGINT" />
+    <result column="ANSWER_CODE" property="answerCode" jdbcType="VARCHAR" />
+    <result column="ANSWER_CONTENT" property="answerContent" jdbcType="VARCHAR" />
+    <result column="ANSWER_TYPE" property="answerType" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="LAST_UPDATOR" property="lastUpdator" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, QUES_ID, ANSWER_PID, ANSWER_CODE, ANSWER_CONTENT, ANSWER_TYPE, STATUS, LAST_UPDATOR, 
+    LAST_UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_FLOW_ANSWER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_FLOW_ANSWER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysFlowAnswer" >
+    insert into dbo.SYS_FLOW_ANSWER (ID, QUES_ID, ANSWER_PID, 
+      ANSWER_CODE, ANSWER_CONTENT, ANSWER_TYPE, 
+      STATUS, LAST_UPDATOR, LAST_UPDATE_TIME
+      )
+    values (#{id,jdbcType=BIGINT}, #{quesId,jdbcType=BIGINT}, #{answerPid,jdbcType=BIGINT}, 
+      #{answerCode,jdbcType=VARCHAR}, #{answerContent,jdbcType=VARCHAR}, #{answerType,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{lastUpdator,jdbcType=BIGINT}, #{lastUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysFlowAnswer" >
+    insert into mapping.SYS_FLOW_ANSWER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="quesId != null" >
+        QUES_ID,
+      </if>
+      <if test="answerPid != null" >
+        ANSWER_PID,
+      </if>
+      <if test="answerCode != null" >
+        ANSWER_CODE,
+      </if>
+      <if test="answerContent != null" >
+        ANSWER_CONTENT,
+      </if>
+      <if test="answerType != null" >
+        ANSWER_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="quesId != null" >
+        #{quesId,jdbcType=BIGINT},
+      </if>
+      <if test="answerPid != null" >
+        #{answerPid,jdbcType=BIGINT},
+      </if>
+      <if test="answerCode != null" >
+        #{answerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="answerContent != null" >
+        #{answerContent,jdbcType=VARCHAR},
+      </if>
+      <if test="answerType != null" >
+        #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysFlowAnswer" >
+    update mapping.SYS_FLOW_ANSWER
+    <set >
+      <if test="quesId != null" >
+        QUES_ID = #{quesId,jdbcType=BIGINT},
+      </if>
+      <if test="answerPid != null" >
+        ANSWER_PID = #{answerPid,jdbcType=BIGINT},
+      </if>
+      <if test="answerCode != null" >
+        ANSWER_CODE = #{answerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="answerContent != null" >
+        ANSWER_CONTENT = #{answerContent,jdbcType=VARCHAR},
+      </if>
+      <if test="answerType != null" >
+        ANSWER_TYPE = #{answerType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysFlowAnswer" >
+    update dbo.SYS_FLOW_ANSWER
+    set QUES_ID = #{quesId,jdbcType=BIGINT},
+      ANSWER_PID = #{answerPid,jdbcType=BIGINT},
+      ANSWER_CODE = #{answerCode,jdbcType=VARCHAR},
+      ANSWER_CONTENT = #{answerContent,jdbcType=VARCHAR},
+      ANSWER_TYPE = #{answerType,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

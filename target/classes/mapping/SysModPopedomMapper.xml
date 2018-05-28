@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysModPopedomMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysModPopedom" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="MOD_ID" property="modId" jdbcType="BIGINT" />
+    <result column="USER_ID" property="userId" jdbcType="BIGINT" />
+    <result column="ROLE_ID" property="roleId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.SysModPopedom" extends="BaseResultMap" >
+    <result column="POPEDOM_CODE" property="popedomCode" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MOD_ID, USER_ID, ROLE_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    POPEDOM_CODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.SYS_MOD_POPEDOM
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_MOD_POPEDOM
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysModPopedom" >
+    insert into dbo.SYS_MOD_POPEDOM (ID, MOD_ID, USER_ID, 
+      ROLE_ID, POPEDOM_CODE)
+    values (#{id,jdbcType=BIGINT}, #{modId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{roleId,jdbcType=BIGINT}, #{popedomCode,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysModPopedom" >
+    insert into mapping.SYS_MOD_POPEDOM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="modId != null" >
+        MOD_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="popedomCode != null" >
+        POPEDOM_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="modId != null" >
+        #{modId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="popedomCode != null" >
+        #{popedomCode,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysModPopedom" >
+    update mapping.SYS_MOD_POPEDOM
+    <set >
+      <if test="modId != null" >
+        MOD_ID = #{modId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="popedomCode != null" >
+        POPEDOM_CODE = #{popedomCode,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.SysModPopedom" >
+    update dbo.SYS_MOD_POPEDOM
+    set MOD_ID = #{modId,jdbcType=BIGINT},
+      USER_ID = #{userId,jdbcType=BIGINT},
+      ROLE_ID = #{roleId,jdbcType=BIGINT},
+      POPEDOM_CODE = #{popedomCode,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysModPopedom" >
+    update dbo.SYS_MOD_POPEDOM
+    set MOD_ID = #{modId,jdbcType=BIGINT},
+      USER_ID = #{userId,jdbcType=BIGINT},
+      ROLE_ID = #{roleId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

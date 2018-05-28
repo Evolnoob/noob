@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysFloorsMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysFloors" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="BIGINT" />
+    <result column="SERIAL_NAME" property="serialName" jdbcType="VARCHAR" />
+    <result column="FLOOR_CODE" property="floorCode" jdbcType="VARCHAR" />
+    <result column="FLOOR_NAME" property="floorName" jdbcType="VARCHAR" />
+    <result column="IS_DEL" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SERIAL_NO, SERIAL_NAME, FLOOR_CODE, FLOOR_NAME, IS_DEL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_FLOORS
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_FLOORS
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysFloors" >
+    insert into dbo.SYS_FLOORS (ID, SERIAL_NO, SERIAL_NAME, 
+      FLOOR_CODE, FLOOR_NAME, IS_DEL
+      )
+    values (#{id,jdbcType=BIGINT}, #{serialNo,jdbcType=BIGINT}, #{serialName,jdbcType=VARCHAR}, 
+      #{floorCode,jdbcType=VARCHAR}, #{floorName,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysFloors" >
+    insert into mapping.SYS_FLOORS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="serialName != null" >
+        SERIAL_NAME,
+      </if>
+      <if test="floorCode != null" >
+        FLOOR_CODE,
+      </if>
+      <if test="floorName != null" >
+        FLOOR_NAME,
+      </if>
+      <if test="isDel != null" >
+        IS_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=BIGINT},
+      </if>
+      <if test="serialName != null" >
+        #{serialName,jdbcType=VARCHAR},
+      </if>
+      <if test="floorCode != null" >
+        #{floorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floorName != null" >
+        #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysFloors" >
+    update mapping.SYS_FLOORS
+    <set >
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=BIGINT},
+      </if>
+      <if test="serialName != null" >
+        SERIAL_NAME = #{serialName,jdbcType=VARCHAR},
+      </if>
+      <if test="floorCode != null" >
+        FLOOR_CODE = #{floorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floorName != null" >
+        FLOOR_NAME = #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        IS_DEL = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysFloors" >
+    update dbo.SYS_FLOORS
+    set SERIAL_NO = #{serialNo,jdbcType=BIGINT},
+      SERIAL_NAME = #{serialName,jdbcType=VARCHAR},
+      FLOOR_CODE = #{floorCode,jdbcType=VARCHAR},
+      FLOOR_NAME = #{floorName,jdbcType=VARCHAR},
+      IS_DEL = #{isDel,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

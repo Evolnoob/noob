@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtFloorQuestionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtFloorQuestionInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PM_ID" property="pmId" jdbcType="BIGINT" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="VARCHAR" />
+    <result column="FLOOR_NAME" property="floorName" jdbcType="VARCHAR" />
+    <result column="QUESTION_TYPE" property="questionType" jdbcType="VARCHAR" />
+    <result column="IS_OPERATION" property="isOperation" jdbcType="INTEGER" />
+    <result column="CREATOR" property="creator" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OPERATOR" property="operator" jdbcType="BIGINT" />
+    <result column="OPERATOR_TIME" property="operatorTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtFloorQuestionInfo" extends="BaseResultMap" >
+    <result column="QUESTION_DESC" property="questionDesc" jdbcType="LONGVARCHAR" />
+    <result column="IMG_PATH" property="imgPath" jdbcType="LONGVARCHAR" />
+    <result column="CAUSE" property="cause" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PM_ID, C_ID, SERIAL_NO, FLOOR_NAME, QUESTION_TYPE, IS_OPERATION, CREATOR, CREATE_TIME, 
+    OPERATOR, OPERATOR_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    QUESTION_DESC, IMG_PATH, CAUSE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.ET_FLOOR_QUESTION_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_FLOOR_QUESTION_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtFloorQuestionInfo" >
+    insert into dbo.ET_FLOOR_QUESTION_INFO (ID, PM_ID, C_ID, SERIAL_NO, 
+      FLOOR_NAME, QUESTION_TYPE, IS_OPERATION, 
+      CREATOR, CREATE_TIME, OPERATOR, 
+      OPERATOR_TIME, QUESTION_DESC, IMG_PATH, 
+      CAUSE)
+    values (#{id,jdbcType=BIGINT}, #{pmId,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{serialNo,jdbcType=VARCHAR}, 
+      #{floorName,jdbcType=VARCHAR}, #{questionType,jdbcType=VARCHAR}, #{isOperation,jdbcType=INTEGER}, 
+      #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=BIGINT}, 
+      #{operatorTime,jdbcType=TIMESTAMP}, #{questionDesc,jdbcType=LONGVARCHAR}, #{imgPath,jdbcType=LONGVARCHAR}, 
+      #{cause,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtFloorQuestionInfo" >
+    insert into mapping.ET_FLOOR_QUESTION_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="pmId != null" >
+        PM_ID,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="floorName != null" >
+        FLOOR_NAME,
+      </if>
+      <if test="questionType != null" >
+        QUESTION_TYPE,
+      </if>
+      <if test="isOperation != null" >
+        IS_OPERATION,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="operator != null" >
+        OPERATOR,
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME,
+      </if>
+      <if test="questionDesc != null" >
+        QUESTION_DESC,
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH,
+      </if>
+      <if test="cause != null" >
+        CAUSE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floorName != null" >
+        #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="isOperation != null" >
+        #{isOperation,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionDesc != null" >
+        #{questionDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgPath != null" >
+        #{imgPath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtFloorQuestionInfo" >
+    update mapping.ET_FLOOR_QUESTION_INFO
+    <set >
+      <if test="pmId != null" >
+        PM_ID = #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floorName != null" >
+        FLOOR_NAME = #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        QUESTION_TYPE = #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="isOperation != null" >
+        IS_OPERATION = #{isOperation,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionDesc != null" >
+        QUESTION_DESC = #{questionDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH = #{imgPath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cause != null" >
+        CAUSE = #{cause,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.EtFloorQuestionInfo" >
+    update dbo.ET_FLOOR_QUESTION_INFO
+    set PM_ID = #{pmId,jdbcType=BIGINT},
+      C_ID = #{cId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      FLOOR_NAME = #{floorName,jdbcType=VARCHAR},
+      QUESTION_TYPE = #{questionType,jdbcType=VARCHAR},
+      IS_OPERATION = #{isOperation,jdbcType=INTEGER},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      QUESTION_DESC = #{questionDesc,jdbcType=LONGVARCHAR},
+      IMG_PATH = #{imgPath,jdbcType=LONGVARCHAR},
+      CAUSE = #{cause,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtFloorQuestionInfo" >
+    update dbo.ET_FLOOR_QUESTION_INFO
+    set PM_ID = #{pmId,jdbcType=BIGINT},
+      C_ID = #{cId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      FLOOR_NAME = #{floorName,jdbcType=VARCHAR},
+      QUESTION_TYPE = #{questionType,jdbcType=VARCHAR},
+      IS_OPERATION = #{isOperation,jdbcType=INTEGER},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

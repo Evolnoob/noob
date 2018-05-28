@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtOnlineFileMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtOnlineFile" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="PM_ID" property="pmId" jdbcType="BIGINT" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="VARCHAR" />
+    <result column="IMG_PATH" property="imgPath" jdbcType="VARCHAR" />
+    <result column="CREATOR" property="creator" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OPERATOR" property="operator" jdbcType="BIGINT" />
+    <result column="OPERATOR_TIME" property="operatorTime" jdbcType="TIMESTAMP" />
+    <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR" />
+    <result column="DATA_NAME" property="dataName" jdbcType="VARCHAR" />
+    <result column="DATA_TYPE" property="dataType" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtOnlineFile" extends="BaseResultMap" >
+    <result column="FILE_SUGGEST_PATH" property="fileSuggestPath" jdbcType="LONGVARCHAR" />
+    <result column="FILE_CHANGE_PATH" property="fileChangePath" jdbcType="LONGVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, C_ID, PM_ID, SERIAL_NO, IMG_PATH, CREATOR, CREATE_TIME, OPERATOR, OPERATOR_TIME, 
+    FILE_TYPE, DATA_NAME, DATA_TYPE, STATUS
+  </sql>
+  <sql id="Blob_Column_List" >
+    FILE_SUGGEST_PATH, FILE_CHANGE_PATH, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.ET_ONLINE_FILE
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_ONLINE_FILE
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtOnlineFile" >
+    insert into dbo.ET_ONLINE_FILE (ID, C_ID, PM_ID, SERIAL_NO, 
+      IMG_PATH, CREATOR, CREATE_TIME, 
+      OPERATOR, OPERATOR_TIME, FILE_TYPE, 
+      DATA_NAME, DATA_TYPE, STATUS, 
+      FILE_SUGGEST_PATH, FILE_CHANGE_PATH, 
+      REMARK)
+    values (#{id,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{pmId,jdbcType=BIGINT}, #{serialNo,jdbcType=VARCHAR}, 
+      #{imgPath,jdbcType=VARCHAR}, #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=BIGINT}, #{operatorTime,jdbcType=TIMESTAMP}, #{fileType,jdbcType=VARCHAR}, 
+      #{dataName,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{fileSuggestPath,jdbcType=LONGVARCHAR}, #{fileChangePath,jdbcType=LONGVARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtOnlineFile" >
+    insert into mapping.ET_ONLINE_FILE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="pmId != null" >
+        PM_ID,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="operator != null" >
+        OPERATOR,
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME,
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE,
+      </if>
+      <if test="dataName != null" >
+        DATA_NAME,
+      </if>
+      <if test="dataType != null" >
+        DATA_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="fileSuggestPath != null" >
+        FILE_SUGGEST_PATH,
+      </if>
+      <if test="fileChangePath != null" >
+        FILE_CHANGE_PATH,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null" >
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="fileSuggestPath != null" >
+        #{fileSuggestPath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fileChangePath != null" >
+        #{fileChangePath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtOnlineFile" >
+    update mapping.ET_ONLINE_FILE
+    <set >
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="pmId != null" >
+        PM_ID = #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null" >
+        DATA_NAME = #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="fileSuggestPath != null" >
+        FILE_SUGGEST_PATH = #{fileSuggestPath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fileChangePath != null" >
+        FILE_CHANGE_PATH = #{fileChangePath,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.EtOnlineFile" >
+    update dbo.ET_ONLINE_FILE
+    set C_ID = #{cId,jdbcType=BIGINT},
+      PM_ID = #{pmId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      DATA_NAME = #{dataName,jdbcType=VARCHAR},
+      DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      FILE_SUGGEST_PATH = #{fileSuggestPath,jdbcType=LONGVARCHAR},
+      FILE_CHANGE_PATH = #{fileChangePath,jdbcType=LONGVARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtOnlineFile" >
+    update dbo.ET_ONLINE_FILE
+    set C_ID = #{cId,jdbcType=BIGINT},
+      PM_ID = #{pmId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      DATA_NAME = #{dataName,jdbcType=VARCHAR},
+      DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtSiteInstallDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtSiteInstallDetail" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SOURCE_ID" property="sourceId" jdbcType="BIGINT" />
+    <result column="SITE_NAME" property="siteName" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="BUILDING" property="building" jdbcType="VARCHAR" />
+    <result column="FLOOR_NUM" property="floorNum" jdbcType="INTEGER" />
+    <result column="PC_MODEL" property="pcModel" jdbcType="VARCHAR" />
+    <result column="INSTALL" property="install" jdbcType="INTEGER" />
+    <result column="OPERATOR" property="operator" jdbcType="BIGINT" />
+    <result column="OPERATOR_TIME" property="operatorTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtSiteInstallDetail" extends="BaseResultMap" >
+    <result column="IMG_PATH" property="imgPath" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SOURCE_ID, SITE_NAME, IP, BUILDING, FLOOR_NUM, PC_MODEL, INSTALL, OPERATOR, OPERATOR_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    IMG_PATH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.ET_SITE_INSTALL_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_SITE_INSTALL_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtSiteInstallDetail" >
+    insert into dbo.ET_SITE_INSTALL_DETAIL (ID, SOURCE_ID, SITE_NAME, 
+      IP, BUILDING, FLOOR_NUM, 
+      PC_MODEL, INSTALL, OPERATOR, 
+      OPERATOR_TIME, IMG_PATH)
+    values (#{id,jdbcType=BIGINT}, #{sourceId,jdbcType=BIGINT}, #{siteName,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR}, #{building,jdbcType=VARCHAR}, #{floorNum,jdbcType=INTEGER}, 
+      #{pcModel,jdbcType=VARCHAR}, #{install,jdbcType=INTEGER}, #{operator,jdbcType=BIGINT}, 
+      #{operatorTime,jdbcType=TIMESTAMP}, #{imgPath,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtSiteInstallDetail" >
+    insert into mapping.ET_SITE_INSTALL_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sourceId != null" >
+        SOURCE_ID,
+      </if>
+      <if test="siteName != null" >
+        SITE_NAME,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="building != null" >
+        BUILDING,
+      </if>
+      <if test="floorNum != null" >
+        FLOOR_NUM,
+      </if>
+      <if test="pcModel != null" >
+        PC_MODEL,
+      </if>
+      <if test="install != null" >
+        INSTALL,
+      </if>
+      <if test="operator != null" >
+        OPERATOR,
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME,
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=BIGINT},
+      </if>
+      <if test="siteName != null" >
+        #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null" >
+        #{building,jdbcType=VARCHAR},
+      </if>
+      <if test="floorNum != null" >
+        #{floorNum,jdbcType=INTEGER},
+      </if>
+      <if test="pcModel != null" >
+        #{pcModel,jdbcType=VARCHAR},
+      </if>
+      <if test="install != null" >
+        #{install,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgPath != null" >
+        #{imgPath,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtSiteInstallDetail" >
+    update mapping.ET_SITE_INSTALL_DETAIL
+    <set >
+      <if test="sourceId != null" >
+        SOURCE_ID = #{sourceId,jdbcType=BIGINT},
+      </if>
+      <if test="siteName != null" >
+        SITE_NAME = #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null" >
+        BUILDING = #{building,jdbcType=VARCHAR},
+      </if>
+      <if test="floorNum != null" >
+        FLOOR_NUM = #{floorNum,jdbcType=INTEGER},
+      </if>
+      <if test="pcModel != null" >
+        PC_MODEL = #{pcModel,jdbcType=VARCHAR},
+      </if>
+      <if test="install != null" >
+        INSTALL = #{install,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH = #{imgPath,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.EtSiteInstallDetail" >
+    update dbo.ET_SITE_INSTALL_DETAIL
+    set SOURCE_ID = #{sourceId,jdbcType=BIGINT},
+      SITE_NAME = #{siteName,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      BUILDING = #{building,jdbcType=VARCHAR},
+      FLOOR_NUM = #{floorNum,jdbcType=INTEGER},
+      PC_MODEL = #{pcModel,jdbcType=VARCHAR},
+      INSTALL = #{install,jdbcType=INTEGER},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      IMG_PATH = #{imgPath,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtSiteInstallDetail" >
+    update dbo.ET_SITE_INSTALL_DETAIL
+    set SOURCE_ID = #{sourceId,jdbcType=BIGINT},
+      SITE_NAME = #{siteName,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      BUILDING = #{building,jdbcType=VARCHAR},
+      FLOOR_NUM = #{floorNum,jdbcType=INTEGER},
+      PC_MODEL = #{pcModel,jdbcType=VARCHAR},
+      INSTALL = #{install,jdbcType=INTEGER},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtCustomerDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtCustomerDetail" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PM_CODE" property="pmCode" jdbcType="VARCHAR" />
+    <result column="PM_NAME" property="pmName" jdbcType="VARCHAR" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="HOSPITAL_LEVEL" property="hospitalLevel" jdbcType="INTEGER" />
+    <result column="SPECIAL_TYPE" property="specialType" jdbcType="VARCHAR" />
+    <result column="CHARACTERISTIC" property="characteristic" jdbcType="VARCHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="INTEGER" />
+    <result column="AREA_CODE" property="areaCode" jdbcType="INTEGER" />
+    <result column="OUTPATIENT_NUM" property="outpatientNum" jdbcType="INTEGER" />
+    <result column="BED_NUM" property="bedNum" jdbcType="INTEGER" />
+    <result column="CREATOR" property="creator" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OPERATOR" property="operator" jdbcType="BIGINT" />
+    <result column="OPERATOR_TIME" property="operatorTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PM_CODE, PM_NAME, C_ID, SERIAL_NO, CUST_NAME, HOSPITAL_LEVEL, SPECIAL_TYPE, CHARACTERISTIC, 
+    CITY_CODE, AREA_CODE, OUTPATIENT_NUM, BED_NUM, CREATOR, CREATE_TIME, OPERATOR, OPERATOR_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.ET_CUSTOMER_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_CUSTOMER_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtCustomerDetail" >
+    insert into dbo.ET_CUSTOMER_DETAIL (ID, PM_CODE, PM_NAME, 
+      C_ID, SERIAL_NO, CUST_NAME, 
+      HOSPITAL_LEVEL, SPECIAL_TYPE, CHARACTERISTIC, 
+      CITY_CODE, AREA_CODE, OUTPATIENT_NUM, 
+      BED_NUM, CREATOR, CREATE_TIME, 
+      OPERATOR, OPERATOR_TIME)
+    values (#{id,jdbcType=BIGINT}, #{pmCode,jdbcType=VARCHAR}, #{pmName,jdbcType=VARCHAR}, 
+      #{cId,jdbcType=BIGINT}, #{serialNo,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, 
+      #{hospitalLevel,jdbcType=INTEGER}, #{specialType,jdbcType=VARCHAR}, #{characteristic,jdbcType=VARCHAR}, 
+      #{cityCode,jdbcType=INTEGER}, #{areaCode,jdbcType=INTEGER}, #{outpatientNum,jdbcType=INTEGER}, 
+      #{bedNum,jdbcType=INTEGER}, #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=BIGINT}, #{operatorTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtCustomerDetail" >
+    insert into mapping.ET_CUSTOMER_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="pmCode != null" >
+        PM_CODE,
+      </if>
+      <if test="pmName != null" >
+        PM_NAME,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="hospitalLevel != null" >
+        HOSPITAL_LEVEL,
+      </if>
+      <if test="specialType != null" >
+        SPECIAL_TYPE,
+      </if>
+      <if test="characteristic != null" >
+        CHARACTERISTIC,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE,
+      </if>
+      <if test="outpatientNum != null" >
+        OUTPATIENT_NUM,
+      </if>
+      <if test="bedNum != null" >
+        BED_NUM,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="operator != null" >
+        OPERATOR,
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pmCode != null" >
+        #{pmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pmName != null" >
+        #{pmName,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLevel != null" >
+        #{hospitalLevel,jdbcType=INTEGER},
+      </if>
+      <if test="specialType != null" >
+        #{specialType,jdbcType=VARCHAR},
+      </if>
+      <if test="characteristic != null" >
+        #{characteristic,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=INTEGER},
+      </if>
+      <if test="outpatientNum != null" >
+        #{outpatientNum,jdbcType=INTEGER},
+      </if>
+      <if test="bedNum != null" >
+        #{bedNum,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtCustomerDetail" >
+    update mapping.ET_CUSTOMER_DETAIL
+    <set >
+      <if test="pmCode != null" >
+        PM_CODE = #{pmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pmName != null" >
+        PM_NAME = #{pmName,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLevel != null" >
+        HOSPITAL_LEVEL = #{hospitalLevel,jdbcType=INTEGER},
+      </if>
+      <if test="specialType != null" >
+        SPECIAL_TYPE = #{specialType,jdbcType=VARCHAR},
+      </if>
+      <if test="characteristic != null" >
+        CHARACTERISTIC = #{characteristic,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE = #{areaCode,jdbcType=INTEGER},
+      </if>
+      <if test="outpatientNum != null" >
+        OUTPATIENT_NUM = #{outpatientNum,jdbcType=INTEGER},
+      </if>
+      <if test="bedNum != null" >
+        BED_NUM = #{bedNum,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="operatorTime != null" >
+        OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtCustomerDetail" >
+    update dbo.ET_CUSTOMER_DETAIL
+    set PM_CODE = #{pmCode,jdbcType=VARCHAR},
+      PM_NAME = #{pmName,jdbcType=VARCHAR},
+      C_ID = #{cId,jdbcType=BIGINT},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      HOSPITAL_LEVEL = #{hospitalLevel,jdbcType=INTEGER},
+      SPECIAL_TYPE = #{specialType,jdbcType=VARCHAR},
+      CHARACTERISTIC = #{characteristic,jdbcType=VARCHAR},
+      CITY_CODE = #{cityCode,jdbcType=INTEGER},
+      AREA_CODE = #{areaCode,jdbcType=INTEGER},
+      OUTPATIENT_NUM = #{outpatientNum,jdbcType=INTEGER},
+      BED_NUM = #{bedNum,jdbcType=INTEGER},
+      CREATOR = #{creator,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OPERATOR = #{operator,jdbcType=BIGINT},
+      OPERATOR_TIME = #{operatorTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

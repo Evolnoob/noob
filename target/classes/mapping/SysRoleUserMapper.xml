@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysRoleUserMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysRoleUser" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="ROLE_ID" property="roleId" jdbcType="BIGINT" />
+    <result column="USER_ID" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ROLE_ID, USER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_ROLE_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_ROLE_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysRoleUser" >
+    insert into dbo.SYS_ROLE_USER (ID, ROLE_ID, USER_ID
+      )
+    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysRoleUser" >
+    insert into mapping.SYS_ROLE_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysRoleUser" >
+    update mapping.SYS_ROLE_USER
+    <set >
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysRoleUser" >
+    update dbo.SYS_ROLE_USER
+    set ROLE_ID = #{roleId,jdbcType=BIGINT},
+      USER_ID = #{userId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

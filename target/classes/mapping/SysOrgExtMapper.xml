@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysOrgExtMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysOrgExt" >
+    <id column="ORG_ID" property="orgId" jdbcType="BIGINT" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="ORG_NAME_EXT" property="orgNameExt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORG_ID, ORG_NAME, ORG_CODE, ORG_NAME_EXT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_ORG_EXT
+    where ORG_ID = #{orgId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_ORG_EXT
+    where ORG_ID = #{orgId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysOrgExt" >
+    insert into dbo.SYS_ORG_EXT (ORG_ID, ORG_NAME, ORG_CODE, 
+      ORG_NAME_EXT)
+    values (#{orgId,jdbcType=BIGINT}, #{orgName,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{orgNameExt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysOrgExt" >
+    insert into mapping.SYS_ORG_EXT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME,
+      </if>
+      <if test="orgCode != null" >
+        ORG_CODE,
+      </if>
+      <if test="orgNameExt != null" >
+        ORG_NAME_EXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNameExt != null" >
+        #{orgNameExt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysOrgExt" >
+    update mapping.SYS_ORG_EXT
+    <set >
+      <if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNameExt != null" >
+        ORG_NAME_EXT = #{orgNameExt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORG_ID = #{orgId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysOrgExt" >
+    update dbo.SYS_ORG_EXT
+    set ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      ORG_NAME_EXT = #{orgNameExt,jdbcType=VARCHAR}
+    where ORG_ID = #{orgId,jdbcType=BIGINT}
+  </update>
+</mapper>

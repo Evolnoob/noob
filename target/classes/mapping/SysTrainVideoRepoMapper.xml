@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysTrainVideoRepoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysTrainVideoRepo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="VIDEO_NAME" property="videoName" jdbcType="VARCHAR" />
+    <result column="VIDEO_TYPE" property="videoType" jdbcType="VARCHAR" />
+    <result column="TYPE_LABEL" property="typeLabel" jdbcType="VARCHAR" />
+    <result column="C_ID" property="cId" jdbcType="BIGINT" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="VIDEO_C_TYPE" property="videoCType" jdbcType="VARCHAR" />
+    <result column="VIDEO_C_LABEL" property="videoCLabel" jdbcType="VARCHAR" />
+    <result column="REMOTE_PATH" property="remotePath" jdbcType="VARCHAR" />
+    <result column="VIDEO_TIME" property="videoTime" jdbcType="BIGINT" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="LAST_UPDATOR" property="lastUpdator" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="IMG_PATH" property="imgPath" jdbcType="VARCHAR" />
+    <result column="DICT_DESC" property="dictDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.SysTrainVideoRepo" extends="BaseResultMap" >
+    <result column="VIDEO_DESC" property="videoDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, VIDEO_NAME, VIDEO_TYPE, TYPE_LABEL, C_ID, CUST_NAME, VIDEO_C_TYPE, VIDEO_C_LABEL, 
+    REMOTE_PATH, VIDEO_TIME, STATUS, LAST_UPDATOR, LAST_UPDATE_TIME, IMG_PATH, DICT_DESC
+  </sql>
+  <sql id="Blob_Column_List" >
+    VIDEO_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.SYS_TRAIN_VIDEO_REPO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_TRAIN_VIDEO_REPO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysTrainVideoRepo" >
+    insert into dbo.SYS_TRAIN_VIDEO_REPO (ID, VIDEO_NAME, VIDEO_TYPE, 
+      TYPE_LABEL, C_ID, CUST_NAME, 
+      VIDEO_C_TYPE, VIDEO_C_LABEL, REMOTE_PATH, 
+      VIDEO_TIME, STATUS, LAST_UPDATOR, 
+      LAST_UPDATE_TIME, IMG_PATH, DICT_DESC, 
+      VIDEO_DESC)
+    values (#{id,jdbcType=BIGINT}, #{videoName,jdbcType=VARCHAR}, #{videoType,jdbcType=VARCHAR}, 
+      #{typeLabel,jdbcType=VARCHAR}, #{cId,jdbcType=BIGINT}, #{custName,jdbcType=VARCHAR}, 
+      #{videoCType,jdbcType=VARCHAR}, #{videoCLabel,jdbcType=VARCHAR}, #{remotePath,jdbcType=VARCHAR}, 
+      #{videoTime,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{lastUpdator,jdbcType=BIGINT}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{imgPath,jdbcType=VARCHAR}, #{dictDesc,jdbcType=VARCHAR}, 
+      #{videoDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysTrainVideoRepo" >
+    insert into mapping.SYS_TRAIN_VIDEO_REPO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="videoName != null" >
+        VIDEO_NAME,
+      </if>
+      <if test="videoType != null" >
+        VIDEO_TYPE,
+      </if>
+      <if test="typeLabel != null" >
+        TYPE_LABEL,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="videoCType != null" >
+        VIDEO_C_TYPE,
+      </if>
+      <if test="videoCLabel != null" >
+        VIDEO_C_LABEL,
+      </if>
+      <if test="remotePath != null" >
+        REMOTE_PATH,
+      </if>
+      <if test="videoTime != null" >
+        VIDEO_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH,
+      </if>
+      <if test="dictDesc != null" >
+        DICT_DESC,
+      </if>
+      <if test="videoDesc != null" >
+        VIDEO_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="videoName != null" >
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null" >
+        #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeLabel != null" >
+        #{typeLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCType != null" >
+        #{videoCType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCLabel != null" >
+        #{videoCLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePath != null" >
+        #{remotePath,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        #{videoTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgPath != null" >
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDesc != null" >
+        #{dictDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDesc != null" >
+        #{videoDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysTrainVideoRepo" >
+    update mapping.SYS_TRAIN_VIDEO_REPO
+    <set >
+      <if test="videoName != null" >
+        VIDEO_NAME = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null" >
+        VIDEO_TYPE = #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeLabel != null" >
+        TYPE_LABEL = #{typeLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCType != null" >
+        VIDEO_C_TYPE = #{videoCType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCLabel != null" >
+        VIDEO_C_LABEL = #{videoCLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePath != null" >
+        REMOTE_PATH = #{remotePath,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        VIDEO_TIME = #{videoTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdator != null" >
+        LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgPath != null" >
+        IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDesc != null" >
+        DICT_DESC = #{dictDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDesc != null" >
+        VIDEO_DESC = #{videoDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.SysTrainVideoRepo" >
+    update dbo.SYS_TRAIN_VIDEO_REPO
+    set VIDEO_NAME = #{videoName,jdbcType=VARCHAR},
+      VIDEO_TYPE = #{videoType,jdbcType=VARCHAR},
+      TYPE_LABEL = #{typeLabel,jdbcType=VARCHAR},
+      C_ID = #{cId,jdbcType=BIGINT},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      VIDEO_C_TYPE = #{videoCType,jdbcType=VARCHAR},
+      VIDEO_C_LABEL = #{videoCLabel,jdbcType=VARCHAR},
+      REMOTE_PATH = #{remotePath,jdbcType=VARCHAR},
+      VIDEO_TIME = #{videoTime,jdbcType=BIGINT},
+      STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      DICT_DESC = #{dictDesc,jdbcType=VARCHAR},
+      VIDEO_DESC = #{videoDesc,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysTrainVideoRepo" >
+    update dbo.SYS_TRAIN_VIDEO_REPO
+    set VIDEO_NAME = #{videoName,jdbcType=VARCHAR},
+      VIDEO_TYPE = #{videoType,jdbcType=VARCHAR},
+      TYPE_LABEL = #{typeLabel,jdbcType=VARCHAR},
+      C_ID = #{cId,jdbcType=BIGINT},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      VIDEO_C_TYPE = #{videoCType,jdbcType=VARCHAR},
+      VIDEO_C_LABEL = #{videoCLabel,jdbcType=VARCHAR},
+      REMOTE_PATH = #{remotePath,jdbcType=VARCHAR},
+      VIDEO_TIME = #{videoTime,jdbcType=BIGINT},
+      STATUS = #{status,jdbcType=INTEGER},
+      LAST_UPDATOR = #{lastUpdator,jdbcType=BIGINT},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      DICT_DESC = #{dictDesc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

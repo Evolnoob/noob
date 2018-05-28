@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.SysFunMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.SysFun" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="FUN_CODE" property="funCode" jdbcType="VARCHAR" />
+    <result column="FUN_NAME" property="funName" jdbcType="VARCHAR" />
+    <result column="ICON_PATH" property="iconPath" jdbcType="VARCHAR" />
+    <result column="ORDER_VALUE" property="orderValue" jdbcType="INTEGER" />
+    <result column="IS_DEL" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, FUN_CODE, FUN_NAME, ICON_PATH, ORDER_VALUE, IS_DEL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.SYS_FUN
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_FUN
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.SysFun" >
+    insert into dbo.SYS_FUN (ID, FUN_CODE, FUN_NAME, 
+      ICON_PATH, ORDER_VALUE, IS_DEL
+      )
+    values (#{id,jdbcType=BIGINT}, #{funCode,jdbcType=VARCHAR}, #{funName,jdbcType=VARCHAR}, 
+      #{iconPath,jdbcType=VARCHAR}, #{orderValue,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.SysFun" >
+    insert into mapping.SYS_FUN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="funCode != null" >
+        FUN_CODE,
+      </if>
+      <if test="funName != null" >
+        FUN_NAME,
+      </if>
+      <if test="iconPath != null" >
+        ICON_PATH,
+      </if>
+      <if test="orderValue != null" >
+        ORDER_VALUE,
+      </if>
+      <if test="isDel != null" >
+        IS_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="funCode != null" >
+        #{funCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funName != null" >
+        #{funName,jdbcType=VARCHAR},
+      </if>
+      <if test="iconPath != null" >
+        #{iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.SysFun" >
+    update mapping.SYS_FUN
+    <set >
+      <if test="funCode != null" >
+        FUN_CODE = #{funCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funName != null" >
+        FUN_NAME = #{funName,jdbcType=VARCHAR},
+      </if>
+      <if test="iconPath != null" >
+        ICON_PATH = #{iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        ORDER_VALUE = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        IS_DEL = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.SysFun" >
+    update dbo.SYS_FUN
+    set FUN_CODE = #{funCode,jdbcType=VARCHAR},
+      FUN_NAME = #{funName,jdbcType=VARCHAR},
+      ICON_PATH = #{iconPath,jdbcType=VARCHAR},
+      ORDER_VALUE = #{orderValue,jdbcType=INTEGER},
+      IS_DEL = #{isDel,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

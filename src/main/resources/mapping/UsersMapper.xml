@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.UsersMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.Users" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, account, age, sex, birthday, password, create_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.Users" >
+    insert into users (id, name, account, 
+      age, sex, birthday, password, 
+      create_date)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{sex,jdbcType=BIT}, #{birthday,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.Users" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.Users" >
+    update users
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.Users" >
+    update users
+    set name = #{name,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=BIT},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.PmisProjectBasicInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.PmisProjectBasicInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="FWLX" property="fwlx" jdbcType="INTEGER" />
+    <result column="XMLX" property="xmlx" jdbcType="VARCHAR" />
+    <result column="XMDJ" property="xmdj" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="KHJDQC" property="khjdqc" jdbcType="VARCHAR" />
+    <result column="KHJDTJ" property="khjdtj" jdbcType="VARCHAR" />
+    <result column="KHJDLJ" property="khjdlj" jdbcType="VARCHAR" />
+    <result column="QS" property="qs" jdbcType="INTEGER" />
+    <result column="XMMS" property="xmms" jdbcType="VARCHAR" />
+    <result column="JHNR" property="jhnr" jdbcType="VARCHAR" />
+    <result column="XMJL" property="xmjl" jdbcType="BIGINT" />
+    <result column="ZJZT" property="zjzt" jdbcType="INTEGER" />
+    <result column="JHZT" property="jhzt" jdbcType="INTEGER" />
+    <result column="ZKRY" property="zkry" jdbcType="BIGINT" />
+    <result column="SSGS" property="ssgs" jdbcType="BIGINT" />
+    <result column="JSDQ" property="jsdq" jdbcType="BIGINT" />
+    <result column="SSJG" property="ssjg" jdbcType="BIGINT" />
+    <result column="KHJG" property="khjg" jdbcType="BIGINT" />
+    <result column="HTXX" property="htxx" jdbcType="BIGINT" />
+    <result column="HTLX" property="htlx" jdbcType="BIGINT" />
+    <result column="BZSM" property="bzsm" jdbcType="VARCHAR" />
+    <result column="GZRQ" property="gzrq" jdbcType="VARCHAR" />
+    <result column="GZSM" property="gzsm" jdbcType="VARCHAR" />
+    <result column="KHXX" property="khxx" jdbcType="BIGINT" />
+    <result column="KHSR" property="khsr" jdbcType="VARCHAR" />
+    <result column="YWCKHSR" property="ywckhsr" jdbcType="VARCHAR" />
+    <result column="KHXS" property="khxs" jdbcType="VARCHAR" />
+    <result column="KHXSSR" property="khxssr" jdbcType="VARCHAR" />
+    <result column="WCRQ" property="wcrq" jdbcType="VARCHAR" />
+    <result column="GXSJ" property="gxsj" jdbcType="VARCHAR" />
+    <result column="GXR" property="gxr" jdbcType="BIGINT" />
+    <result column="ZT" property="zt" jdbcType="INTEGER" />
+    <result column="THFS" property="thfs" jdbcType="INTEGER" />
+    <result column="JDQRZT" property="jdqrzt" jdbcType="INTEGER" />
+    <result column="QRBZSM" property="qrbzsm" jdbcType="VARCHAR" />
+    <result column="XDRQ" property="xdrq" jdbcType="VARCHAR" />
+    <result column="YJZT" property="yjzt" jdbcType="INTEGER" />
+    <result column="YJRQ" property="yjrq" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, FWLX, XMLX, XMDJ, NAME, KHJDQC, KHJDTJ, KHJDLJ, QS, XMMS, JHNR, XMJL, ZJZT, JHZT, 
+    ZKRY, SSGS, JSDQ, SSJG, KHJG, HTXX, HTLX, BZSM, GZRQ, GZSM, KHXX, KHSR, YWCKHSR, 
+    KHXS, KHXSSR, WCRQ, GXSJ, GXR, ZT, THFS, JDQRZT, QRBZSM, XDRQ, YJZT, YJRQ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.PMIS_PROJECT_BASIC_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.PMIS_PROJECT_BASIC_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.PmisProjectBasicInfo" >
+    insert into dbo.PMIS_PROJECT_BASIC_INFO (ID, FWLX, XMLX, 
+      XMDJ, NAME, KHJDQC, 
+      KHJDTJ, KHJDLJ, QS, 
+      XMMS, JHNR, XMJL, ZJZT, 
+      JHZT, ZKRY, SSGS, JSDQ, 
+      SSJG, KHJG, HTXX, HTLX, 
+      BZSM, GZRQ, GZSM, KHXX, 
+      KHSR, YWCKHSR, KHXS, 
+      KHXSSR, WCRQ, GXSJ, 
+      GXR, ZT, THFS, JDQRZT, 
+      QRBZSM, XDRQ, YJZT, 
+      YJRQ)
+    values (#{id,jdbcType=BIGINT}, #{fwlx,jdbcType=INTEGER}, #{xmlx,jdbcType=VARCHAR}, 
+      #{xmdj,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{khjdqc,jdbcType=VARCHAR}, 
+      #{khjdtj,jdbcType=VARCHAR}, #{khjdlj,jdbcType=VARCHAR}, #{qs,jdbcType=INTEGER}, 
+      #{xmms,jdbcType=VARCHAR}, #{jhnr,jdbcType=VARCHAR}, #{xmjl,jdbcType=BIGINT}, #{zjzt,jdbcType=INTEGER}, 
+      #{jhzt,jdbcType=INTEGER}, #{zkry,jdbcType=BIGINT}, #{ssgs,jdbcType=BIGINT}, #{jsdq,jdbcType=BIGINT}, 
+      #{ssjg,jdbcType=BIGINT}, #{khjg,jdbcType=BIGINT}, #{htxx,jdbcType=BIGINT}, #{htlx,jdbcType=BIGINT}, 
+      #{bzsm,jdbcType=VARCHAR}, #{gzrq,jdbcType=VARCHAR}, #{gzsm,jdbcType=VARCHAR}, #{khxx,jdbcType=BIGINT}, 
+      #{khsr,jdbcType=VARCHAR}, #{ywckhsr,jdbcType=VARCHAR}, #{khxs,jdbcType=VARCHAR}, 
+      #{khxssr,jdbcType=VARCHAR}, #{wcrq,jdbcType=VARCHAR}, #{gxsj,jdbcType=VARCHAR}, 
+      #{gxr,jdbcType=BIGINT}, #{zt,jdbcType=INTEGER}, #{thfs,jdbcType=INTEGER}, #{jdqrzt,jdbcType=INTEGER}, 
+      #{qrbzsm,jdbcType=VARCHAR}, #{xdrq,jdbcType=VARCHAR}, #{yjzt,jdbcType=INTEGER}, 
+      #{yjrq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.PmisProjectBasicInfo" >
+    insert into mapping.PMIS_PROJECT_BASIC_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="fwlx != null" >
+        FWLX,
+      </if>
+      <if test="xmlx != null" >
+        XMLX,
+      </if>
+      <if test="xmdj != null" >
+        XMDJ,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="khjdqc != null" >
+        KHJDQC,
+      </if>
+      <if test="khjdtj != null" >
+        KHJDTJ,
+      </if>
+      <if test="khjdlj != null" >
+        KHJDLJ,
+      </if>
+      <if test="qs != null" >
+        QS,
+      </if>
+      <if test="xmms != null" >
+        XMMS,
+      </if>
+      <if test="jhnr != null" >
+        JHNR,
+      </if>
+      <if test="xmjl != null" >
+        XMJL,
+      </if>
+      <if test="zjzt != null" >
+        ZJZT,
+      </if>
+      <if test="jhzt != null" >
+        JHZT,
+      </if>
+      <if test="zkry != null" >
+        ZKRY,
+      </if>
+      <if test="ssgs != null" >
+        SSGS,
+      </if>
+      <if test="jsdq != null" >
+        JSDQ,
+      </if>
+      <if test="ssjg != null" >
+        SSJG,
+      </if>
+      <if test="khjg != null" >
+        KHJG,
+      </if>
+      <if test="htxx != null" >
+        HTXX,
+      </if>
+      <if test="htlx != null" >
+        HTLX,
+      </if>
+      <if test="bzsm != null" >
+        BZSM,
+      </if>
+      <if test="gzrq != null" >
+        GZRQ,
+      </if>
+      <if test="gzsm != null" >
+        GZSM,
+      </if>
+      <if test="khxx != null" >
+        KHXX,
+      </if>
+      <if test="khsr != null" >
+        KHSR,
+      </if>
+      <if test="ywckhsr != null" >
+        YWCKHSR,
+      </if>
+      <if test="khxs != null" >
+        KHXS,
+      </if>
+      <if test="khxssr != null" >
+        KHXSSR,
+      </if>
+      <if test="wcrq != null" >
+        WCRQ,
+      </if>
+      <if test="gxsj != null" >
+        GXSJ,
+      </if>
+      <if test="gxr != null" >
+        GXR,
+      </if>
+      <if test="zt != null" >
+        ZT,
+      </if>
+      <if test="thfs != null" >
+        THFS,
+      </if>
+      <if test="jdqrzt != null" >
+        JDQRZT,
+      </if>
+      <if test="qrbzsm != null" >
+        QRBZSM,
+      </if>
+      <if test="xdrq != null" >
+        XDRQ,
+      </if>
+      <if test="yjzt != null" >
+        YJZT,
+      </if>
+      <if test="yjrq != null" >
+        YJRQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fwlx != null" >
+        #{fwlx,jdbcType=INTEGER},
+      </if>
+      <if test="xmlx != null" >
+        #{xmlx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmdj != null" >
+        #{xmdj,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdqc != null" >
+        #{khjdqc,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdtj != null" >
+        #{khjdtj,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdlj != null" >
+        #{khjdlj,jdbcType=VARCHAR},
+      </if>
+      <if test="qs != null" >
+        #{qs,jdbcType=INTEGER},
+      </if>
+      <if test="xmms != null" >
+        #{xmms,jdbcType=VARCHAR},
+      </if>
+      <if test="jhnr != null" >
+        #{jhnr,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjl != null" >
+        #{xmjl,jdbcType=BIGINT},
+      </if>
+      <if test="zjzt != null" >
+        #{zjzt,jdbcType=INTEGER},
+      </if>
+      <if test="jhzt != null" >
+        #{jhzt,jdbcType=INTEGER},
+      </if>
+      <if test="zkry != null" >
+        #{zkry,jdbcType=BIGINT},
+      </if>
+      <if test="ssgs != null" >
+        #{ssgs,jdbcType=BIGINT},
+      </if>
+      <if test="jsdq != null" >
+        #{jsdq,jdbcType=BIGINT},
+      </if>
+      <if test="ssjg != null" >
+        #{ssjg,jdbcType=BIGINT},
+      </if>
+      <if test="khjg != null" >
+        #{khjg,jdbcType=BIGINT},
+      </if>
+      <if test="htxx != null" >
+        #{htxx,jdbcType=BIGINT},
+      </if>
+      <if test="htlx != null" >
+        #{htlx,jdbcType=BIGINT},
+      </if>
+      <if test="bzsm != null" >
+        #{bzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gzrq != null" >
+        #{gzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="gzsm != null" >
+        #{gzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="khxx != null" >
+        #{khxx,jdbcType=BIGINT},
+      </if>
+      <if test="khsr != null" >
+        #{khsr,jdbcType=VARCHAR},
+      </if>
+      <if test="ywckhsr != null" >
+        #{ywckhsr,jdbcType=VARCHAR},
+      </if>
+      <if test="khxs != null" >
+        #{khxs,jdbcType=VARCHAR},
+      </if>
+      <if test="khxssr != null" >
+        #{khxssr,jdbcType=VARCHAR},
+      </if>
+      <if test="wcrq != null" >
+        #{wcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        #{gxr,jdbcType=BIGINT},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="thfs != null" >
+        #{thfs,jdbcType=INTEGER},
+      </if>
+      <if test="jdqrzt != null" >
+        #{jdqrzt,jdbcType=INTEGER},
+      </if>
+      <if test="qrbzsm != null" >
+        #{qrbzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="xdrq != null" >
+        #{xdrq,jdbcType=VARCHAR},
+      </if>
+      <if test="yjzt != null" >
+        #{yjzt,jdbcType=INTEGER},
+      </if>
+      <if test="yjrq != null" >
+        #{yjrq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.PmisProjectBasicInfo" >
+    update mapping.PMIS_PROJECT_BASIC_INFO
+    <set >
+      <if test="fwlx != null" >
+        FWLX = #{fwlx,jdbcType=INTEGER},
+      </if>
+      <if test="xmlx != null" >
+        XMLX = #{xmlx,jdbcType=VARCHAR},
+      </if>
+      <if test="xmdj != null" >
+        XMDJ = #{xmdj,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdqc != null" >
+        KHJDQC = #{khjdqc,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdtj != null" >
+        KHJDTJ = #{khjdtj,jdbcType=VARCHAR},
+      </if>
+      <if test="khjdlj != null" >
+        KHJDLJ = #{khjdlj,jdbcType=VARCHAR},
+      </if>
+      <if test="qs != null" >
+        QS = #{qs,jdbcType=INTEGER},
+      </if>
+      <if test="xmms != null" >
+        XMMS = #{xmms,jdbcType=VARCHAR},
+      </if>
+      <if test="jhnr != null" >
+        JHNR = #{jhnr,jdbcType=VARCHAR},
+      </if>
+      <if test="xmjl != null" >
+        XMJL = #{xmjl,jdbcType=BIGINT},
+      </if>
+      <if test="zjzt != null" >
+        ZJZT = #{zjzt,jdbcType=INTEGER},
+      </if>
+      <if test="jhzt != null" >
+        JHZT = #{jhzt,jdbcType=INTEGER},
+      </if>
+      <if test="zkry != null" >
+        ZKRY = #{zkry,jdbcType=BIGINT},
+      </if>
+      <if test="ssgs != null" >
+        SSGS = #{ssgs,jdbcType=BIGINT},
+      </if>
+      <if test="jsdq != null" >
+        JSDQ = #{jsdq,jdbcType=BIGINT},
+      </if>
+      <if test="ssjg != null" >
+        SSJG = #{ssjg,jdbcType=BIGINT},
+      </if>
+      <if test="khjg != null" >
+        KHJG = #{khjg,jdbcType=BIGINT},
+      </if>
+      <if test="htxx != null" >
+        HTXX = #{htxx,jdbcType=BIGINT},
+      </if>
+      <if test="htlx != null" >
+        HTLX = #{htlx,jdbcType=BIGINT},
+      </if>
+      <if test="bzsm != null" >
+        BZSM = #{bzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gzrq != null" >
+        GZRQ = #{gzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="gzsm != null" >
+        GZSM = #{gzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="khxx != null" >
+        KHXX = #{khxx,jdbcType=BIGINT},
+      </if>
+      <if test="khsr != null" >
+        KHSR = #{khsr,jdbcType=VARCHAR},
+      </if>
+      <if test="ywckhsr != null" >
+        YWCKHSR = #{ywckhsr,jdbcType=VARCHAR},
+      </if>
+      <if test="khxs != null" >
+        KHXS = #{khxs,jdbcType=VARCHAR},
+      </if>
+      <if test="khxssr != null" >
+        KHXSSR = #{khxssr,jdbcType=VARCHAR},
+      </if>
+      <if test="wcrq != null" >
+        WCRQ = #{wcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        GXSJ = #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        GXR = #{gxr,jdbcType=BIGINT},
+      </if>
+      <if test="zt != null" >
+        ZT = #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="thfs != null" >
+        THFS = #{thfs,jdbcType=INTEGER},
+      </if>
+      <if test="jdqrzt != null" >
+        JDQRZT = #{jdqrzt,jdbcType=INTEGER},
+      </if>
+      <if test="qrbzsm != null" >
+        QRBZSM = #{qrbzsm,jdbcType=VARCHAR},
+      </if>
+      <if test="xdrq != null" >
+        XDRQ = #{xdrq,jdbcType=VARCHAR},
+      </if>
+      <if test="yjzt != null" >
+        YJZT = #{yjzt,jdbcType=INTEGER},
+      </if>
+      <if test="yjrq != null" >
+        YJRQ = #{yjrq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.PmisProjectBasicInfo" >
+    update dbo.PMIS_PROJECT_BASIC_INFO
+    set FWLX = #{fwlx,jdbcType=INTEGER},
+      XMLX = #{xmlx,jdbcType=VARCHAR},
+      XMDJ = #{xmdj,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      KHJDQC = #{khjdqc,jdbcType=VARCHAR},
+      KHJDTJ = #{khjdtj,jdbcType=VARCHAR},
+      KHJDLJ = #{khjdlj,jdbcType=VARCHAR},
+      QS = #{qs,jdbcType=INTEGER},
+      XMMS = #{xmms,jdbcType=VARCHAR},
+      JHNR = #{jhnr,jdbcType=VARCHAR},
+      XMJL = #{xmjl,jdbcType=BIGINT},
+      ZJZT = #{zjzt,jdbcType=INTEGER},
+      JHZT = #{jhzt,jdbcType=INTEGER},
+      ZKRY = #{zkry,jdbcType=BIGINT},
+      SSGS = #{ssgs,jdbcType=BIGINT},
+      JSDQ = #{jsdq,jdbcType=BIGINT},
+      SSJG = #{ssjg,jdbcType=BIGINT},
+      KHJG = #{khjg,jdbcType=BIGINT},
+      HTXX = #{htxx,jdbcType=BIGINT},
+      HTLX = #{htlx,jdbcType=BIGINT},
+      BZSM = #{bzsm,jdbcType=VARCHAR},
+      GZRQ = #{gzrq,jdbcType=VARCHAR},
+      GZSM = #{gzsm,jdbcType=VARCHAR},
+      KHXX = #{khxx,jdbcType=BIGINT},
+      KHSR = #{khsr,jdbcType=VARCHAR},
+      YWCKHSR = #{ywckhsr,jdbcType=VARCHAR},
+      KHXS = #{khxs,jdbcType=VARCHAR},
+      KHXSSR = #{khxssr,jdbcType=VARCHAR},
+      WCRQ = #{wcrq,jdbcType=VARCHAR},
+      GXSJ = #{gxsj,jdbcType=VARCHAR},
+      GXR = #{gxr,jdbcType=BIGINT},
+      ZT = #{zt,jdbcType=INTEGER},
+      THFS = #{thfs,jdbcType=INTEGER},
+      JDQRZT = #{jdqrzt,jdbcType=INTEGER},
+      QRBZSM = #{qrbzsm,jdbcType=VARCHAR},
+      XDRQ = #{xdrq,jdbcType=VARCHAR},
+      YJZT = #{yjzt,jdbcType=INTEGER},
+      YJRQ = #{yjrq,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

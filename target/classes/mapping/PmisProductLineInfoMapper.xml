@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.PmisProductLineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.PmisProductLineInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ZT" property="zt" jdbcType="INTEGER" />
+    <result column="LX" property="lx" jdbcType="INTEGER" />
+    <result column="YXTNM" property="yxtnm" jdbcType="VARCHAR" />
+    <result column="MKLX" property="mklx" jdbcType="VARCHAR" />
+    <result column="SX" property="sx" jdbcType="VARCHAR" />
+    <result column="HSDY" property="hsdy" jdbcType="VARCHAR" />
+    <result column="CPZ" property="cpz" jdbcType="VARCHAR" />
+    <result column="CPXL" property="cpxl" jdbcType="VARCHAR" />
+    <result column="CPDL" property="cpdl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, ZT, LX, YXTNM, MKLX, SX, HSDY, CPZ, CPXL, CPDL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mapping.PMIS_PRODUCT_LINE_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.PMIS_PRODUCT_LINE_INFO
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.PmisProductLineInfo" >
+    insert into dbo.PMIS_PRODUCT_LINE_INFO (ID, NAME, ZT, 
+      LX, YXTNM, MKLX, SX, 
+      HSDY, CPZ, CPXL, CPDL
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{zt,jdbcType=INTEGER}, 
+      #{lx,jdbcType=INTEGER}, #{yxtnm,jdbcType=VARCHAR}, #{mklx,jdbcType=VARCHAR}, #{sx,jdbcType=VARCHAR}, 
+      #{hsdy,jdbcType=VARCHAR}, #{cpz,jdbcType=VARCHAR}, #{cpxl,jdbcType=VARCHAR}, #{cpdl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.PmisProductLineInfo" >
+    insert into mapping.PMIS_PRODUCT_LINE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="zt != null" >
+        ZT,
+      </if>
+      <if test="lx != null" >
+        LX,
+      </if>
+      <if test="yxtnm != null" >
+        YXTNM,
+      </if>
+      <if test="mklx != null" >
+        MKLX,
+      </if>
+      <if test="sx != null" >
+        SX,
+      </if>
+      <if test="hsdy != null" >
+        HSDY,
+      </if>
+      <if test="cpz != null" >
+        CPZ,
+      </if>
+      <if test="cpxl != null" >
+        CPXL,
+      </if>
+      <if test="cpdl != null" >
+        CPDL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="yxtnm != null" >
+        #{yxtnm,jdbcType=VARCHAR},
+      </if>
+      <if test="mklx != null" >
+        #{mklx,jdbcType=VARCHAR},
+      </if>
+      <if test="sx != null" >
+        #{sx,jdbcType=VARCHAR},
+      </if>
+      <if test="hsdy != null" >
+        #{hsdy,jdbcType=VARCHAR},
+      </if>
+      <if test="cpz != null" >
+        #{cpz,jdbcType=VARCHAR},
+      </if>
+      <if test="cpxl != null" >
+        #{cpxl,jdbcType=VARCHAR},
+      </if>
+      <if test="cpdl != null" >
+        #{cpdl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.PmisProductLineInfo" >
+    update mapping.PMIS_PRODUCT_LINE_INFO
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        ZT = #{zt,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        LX = #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="yxtnm != null" >
+        YXTNM = #{yxtnm,jdbcType=VARCHAR},
+      </if>
+      <if test="mklx != null" >
+        MKLX = #{mklx,jdbcType=VARCHAR},
+      </if>
+      <if test="sx != null" >
+        SX = #{sx,jdbcType=VARCHAR},
+      </if>
+      <if test="hsdy != null" >
+        HSDY = #{hsdy,jdbcType=VARCHAR},
+      </if>
+      <if test="cpz != null" >
+        CPZ = #{cpz,jdbcType=VARCHAR},
+      </if>
+      <if test="cpxl != null" >
+        CPXL = #{cpxl,jdbcType=VARCHAR},
+      </if>
+      <if test="cpdl != null" >
+        CPDL = #{cpdl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.PmisProductLineInfo" >
+    update dbo.PMIS_PRODUCT_LINE_INFO
+    set NAME = #{name,jdbcType=VARCHAR},
+      ZT = #{zt,jdbcType=INTEGER},
+      LX = #{lx,jdbcType=INTEGER},
+      YXTNM = #{yxtnm,jdbcType=VARCHAR},
+      MKLX = #{mklx,jdbcType=VARCHAR},
+      SX = #{sx,jdbcType=VARCHAR},
+      HSDY = #{hsdy,jdbcType=VARCHAR},
+      CPZ = #{cpz,jdbcType=VARCHAR},
+      CPXL = #{cpxl,jdbcType=VARCHAR},
+      CPDL = #{cpdl,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

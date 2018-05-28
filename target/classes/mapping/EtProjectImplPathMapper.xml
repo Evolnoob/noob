@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winning.dao.EtProjectImplPathMapper" >
+  <resultMap id="BaseResultMap" type="com.winning.model.mapping.EtProjectImplPath" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="MILEPOST" property="milepost" jdbcType="VARCHAR" />
+    <result column="MAIN_STEP" property="mainStep" jdbcType="VARCHAR" />
+    <result column="STEP_TYPE" property="stepType" jdbcType="VARCHAR" />
+    <result column="STEP_CONTENT" property="stepContent" jdbcType="VARCHAR" />
+    <result column="STEP_DESC" property="stepDesc" jdbcType="VARCHAR" />
+    <result column="STEP_OUTPUT" property="stepOutput" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.winning.model.mapping.EtProjectImplPath" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MILEPOST, MAIN_STEP, STEP_TYPE, STEP_CONTENT, STEP_DESC, STEP_OUTPUT
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mapping.ET_PROJECT_IMPL_PATH
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.ET_PROJECT_IMPL_PATH
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winning.model.mapping.EtProjectImplPath" >
+    insert into dbo.ET_PROJECT_IMPL_PATH (ID, MILEPOST, MAIN_STEP, 
+      STEP_TYPE, STEP_CONTENT, STEP_DESC, 
+      STEP_OUTPUT, REMARK)
+    values (#{id,jdbcType=BIGINT}, #{milepost,jdbcType=VARCHAR}, #{mainStep,jdbcType=VARCHAR}, 
+      #{stepType,jdbcType=VARCHAR}, #{stepContent,jdbcType=VARCHAR}, #{stepDesc,jdbcType=VARCHAR}, 
+      #{stepOutput,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.winning.model.mapping.EtProjectImplPath" >
+    insert into mapping.ET_PROJECT_IMPL_PATH
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="milepost != null" >
+        MILEPOST,
+      </if>
+      <if test="mainStep != null" >
+        MAIN_STEP,
+      </if>
+      <if test="stepType != null" >
+        STEP_TYPE,
+      </if>
+      <if test="stepContent != null" >
+        STEP_CONTENT,
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC,
+      </if>
+      <if test="stepOutput != null" >
+        STEP_OUTPUT,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="milepost != null" >
+        #{milepost,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStep != null" >
+        #{mainStep,jdbcType=VARCHAR},
+      </if>
+      <if test="stepType != null" >
+        #{stepType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepContent != null" >
+        #{stepContent,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepOutput != null" >
+        #{stepOutput,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winning.model.mapping.EtProjectImplPath" >
+    update mapping.ET_PROJECT_IMPL_PATH
+    <set >
+      <if test="milepost != null" >
+        MILEPOST = #{milepost,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStep != null" >
+        MAIN_STEP = #{mainStep,jdbcType=VARCHAR},
+      </if>
+      <if test="stepType != null" >
+        STEP_TYPE = #{stepType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepContent != null" >
+        STEP_CONTENT = #{stepContent,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC = #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepOutput != null" >
+        STEP_OUTPUT = #{stepOutput,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.winning.model.mapping.EtProjectImplPath" >
+    update dbo.ET_PROJECT_IMPL_PATH
+    set MILEPOST = #{milepost,jdbcType=VARCHAR},
+      MAIN_STEP = #{mainStep,jdbcType=VARCHAR},
+      STEP_TYPE = #{stepType,jdbcType=VARCHAR},
+      STEP_CONTENT = #{stepContent,jdbcType=VARCHAR},
+      STEP_DESC = #{stepDesc,jdbcType=VARCHAR},
+      STEP_OUTPUT = #{stepOutput,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winning.model.mapping.EtProjectImplPath" >
+    update dbo.ET_PROJECT_IMPL_PATH
+    set MILEPOST = #{milepost,jdbcType=VARCHAR},
+      MAIN_STEP = #{mainStep,jdbcType=VARCHAR},
+      STEP_TYPE = #{stepType,jdbcType=VARCHAR},
+      STEP_CONTENT = #{stepContent,jdbcType=VARCHAR},
+      STEP_DESC = #{stepDesc,jdbcType=VARCHAR},
+      STEP_OUTPUT = #{stepOutput,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
