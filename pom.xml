@@ -210,7 +210,7 @@
                 <version>9.2.8.v20150217</version>
                 <configuration>
                     <httpConnector>
-                        <port>8080</port>
+                        <port>8989</port>
                     </httpConnector>
                     <stopKey>shutdown</stopKey>
                     <stopPort>9966</stopPort>
