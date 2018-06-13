@@ -6,58 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <html>
 <head>
-    <meta charset="gb2312">
-    <title>模板分享_陈枫个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
-    <meta name="keywords" content="个人博客,陈枫个人博客,个人博客模板,陈枫"/>
-    <meta name="description" content="陈枫个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/share.css" rel="stylesheet">
-    <link href="css/m.css" rel="stylesheet">
-    <script src="js/scrollReveal.js"></script>
-    <!--[if lt IE 9]>
-    <script src="js/modernizr.js"></script>
-    <![endif]-->
-    <script>
-        window.onload = function () {
-            var oH2 = document.getElementsByTagName("h2")[0];
-            var oUl = document.getElementsByTagName("ul")[0];
-            oH2.onclick = function () {
-                var style = oUl.style;
-                style.display = style.display == "block" ? "none" : "block";
-                oH2.className = style.display == "block" ? "open" : ""
-            }
-        }
-    </script>
+<jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-<header>
-    <div id="mnav">
-        <h2><span class="navicon"></span></h2>
-        <ul>
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="share.html">模板分享</a></li>
-            <li><a href="list.html">学无止境</a></li>
-            <li><a href="list.html">慢生活</a></li>
-            <li><a href="link.html">博客导航</a></li>
-            <li><a href="gbook.html">留言</a></li>
-        </ul>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="share.html">模板分享</a></li>
-            <li><a href="list.html">学无止境</a></li>
-            <li><a href="list.html">慢生活</a></li>
-            <li><a href="link.html">博客导航</a></li>
-            <li><a href="gbook.html">留言</a></li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="menu.jsp"></jsp:include>
 <article>
     <h2 class="litle"><span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span>模板分享</h2>
     <div class="navtab">
