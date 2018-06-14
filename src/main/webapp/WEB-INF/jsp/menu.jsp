@@ -15,10 +15,10 @@
             <li><a href="${ctx}/index/index">网站首页</a></li>
             <li><a href="${ctx}/mien/index>">关于我</a></li>
             <li><a href="${ctx}/forLove/index">告白墙</a></li>
-            <li><a href="list.html">学无止境</a></li>
-            <li><a href="list.html">慢生活</a></li>
-            <li><a href="link.html">博客导航</a></li>
-            <li><a href="gbook.html">留言</a></li>
+            <li><a href="${ctx}/study/index">学无止境</a></li>
+            <li><a href="${ctx}/life/index">慢生活</a></li>
+            <li><a href="${ctx}/navigation/index">博客导航</a></li>
+            <li><a href="${ctx}/message/index">留言</a></li>
         </ul>
     </div>
     <div class="topnav">
@@ -27,10 +27,10 @@
                 <li><a href="${ctx}/index/index">网站首页</a></li>
                 <li><a href="${ctx}/mien/index">关于我</a></li>
                 <li><a href="${ctx}/forLove/index">告白墙</a></li>
-                <li><a href="list.html">学无止境</a></li>
-                <li><a href="list.html">慢生活</a></li>
-                <li><a href="link.html">博客导航</a></li>
-                <li><a href="gbook.html">留言</a></li>
+                <li><a href="${ctx}/study/index">学无止境</a></li>
+                <li><a href="${ctx}/life/index">慢生活</a></li>
+                <li><a href="${ctx}/navigation/index">博客导航</a></li>
+                <li><a href="${ctx}/message/index">留言</a></li>
             </ul>
         </nav>
     </div>

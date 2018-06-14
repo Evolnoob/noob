@@ -5,7 +5,6 @@
     <title>陈枫个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="${ctx}/resources/css/base.css" rel="stylesheet">
-    <link href="${ctx}/resources/css/about.css" rel="stylesheet">
     <link href="${ctx}/resources/css/m.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="${ctx}/resources/js/modernizr.js"></script>

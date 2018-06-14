@@ -10,6 +10,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <html>
 <jsp:include page="header.jsp"></jsp:include>
+<link href="${ctx}/resources/css/about.css" rel="stylesheet">
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
 <article>
