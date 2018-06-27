@@ -11,8 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/forLove")
 public class ForLoveController {
-    @RequestMapping("/index")
-    public String index() {
-        return "forLove";
-    }
+	/**
+	 * 告白墙主页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/index")
+	public String index() {
+		return "forLove";
+	}
+
+	/**
+	 * 告白动画页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/love")
+	public String love() {
+		return "love";
+	}
 }

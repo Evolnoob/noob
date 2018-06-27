@@ -17,7 +17,7 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 	<article>
 		<h2 class="litle">
-			<span>你本无意穿堂风，偏偏孤居引山洪。</span>嘿，姑娘！
+			<span>我本无意穿堂风，偏偏孤居引山洪。</span>嘿，姑娘！
 		</h2>
 		<div class="navtab">
 			<div class="search">
@@ -57,6 +57,7 @@
 					<strong>正在开发中...</strong>（有没有小姐姐，心里没点逼数么，还告白墙...）
 				</p>
 			</div>
+			<iframe src="${ctx}/forLove/love" width="100%" height="100%" allowtransparency="true" frameborder="0" scrolling="no" ></iframe>
 		</div>
 	</article>
 	<footer>
@@ -66,15 +67,6 @@
 	</footer>
 </body>
 </html>
-<script>
-	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
-		(function() {
-			window.scrollReveal = new scrollReveal({
-				reset : true
-			});
-		})();
-	};
-</script>
 <script type="text/javascript">
 $(function(){
 	$("#tag_2").click(function(){
