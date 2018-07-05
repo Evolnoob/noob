@@ -57,7 +57,7 @@
 					<strong>正在开发中...</strong>（有没有小姐姐，心里没点逼数么，还告白墙...）
 				</p>
 			</div>
-			<iframe src="${ctx}/forLove/love" width="100%" height="100%" allowtransparency="true" frameborder="0" scrolling="no" ></iframe>
+			<iframe src="${ctx}/forLove/love" width="100%" height="100%" allowtransparency="true" frameborder="0" scrolling="auto" ></iframe>
 		</div>
 	</article>
 	<footer>
