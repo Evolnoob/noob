@@ -202,7 +202,7 @@
     </dependencies>
 
     <build>
-        <finalName>maven01</finalName>
+        <finalName>noob</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -212,6 +212,7 @@
                     <httpConnector>
                         <port>8989</port>
                     </httpConnector>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
                     <stopKey>shutdown</stopKey>
                     <stopPort>9966</stopPort>
                 </configuration>

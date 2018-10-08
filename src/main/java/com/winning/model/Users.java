@@ -11,11 +11,7 @@ public class Users {
 
     private Boolean sex;
 
-    private String birthday;
-
-    private String password;
-
-    private String createDate;
+    private Integer roleId;
 
     public Integer getId() {
         return id;
@@ -57,27 +53,11 @@ public class Users {
         this.sex = sex;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday == null ? null : birthday.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
-
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate == null ? null : createDate.trim();
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }
