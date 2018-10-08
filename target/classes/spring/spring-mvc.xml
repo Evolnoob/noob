@@ -74,4 +74,6 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    <!--静态资源访问-->
+    <mvc:resources mapping="/**" location="/resources" />
 </beans>
