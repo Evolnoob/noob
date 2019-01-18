@@ -34,7 +34,7 @@
 	<audio autoplay="autopaly">
 		<source src="renxi.mp3" type="audio/mp3" />
 	</audio>
-	<div id="main" style="width: 80%; height: 500px">
+	<div id="main" style="width: 80%; height: 80%">
 		<div id="error">
 			本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a
 				href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a
@@ -57,7 +57,7 @@
 				<span><font color="#666666">老哥，这是你单身</font></span>
 				<div id="clock"></div>
 			</div>
-			<canvas id="canvas" width="1100" height="680"></canvas>
+			<canvas id="canvas" width="50%" height="50%"></canvas>
 		</div>
 	</div>
 	<script>

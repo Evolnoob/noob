@@ -1,17 +1,23 @@
 package com.winning.model;
 
+import java.util.Date;
+
 public class Users {
     private Integer id;
 
     private String name;
 
-    private String account;
+    private Boolean sex;
 
     private Integer age;
 
-    private Boolean sex;
+    private String account;
 
     private Integer roleId;
+
+    private String password;
+
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -29,12 +35,12 @@ public class Users {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getAccount() {
-        return account;
+    public Boolean getSex() {
+        return sex;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setSex(Boolean sex) {
+        this.sex = sex;
     }
 
     public Integer getAge() {
@@ -45,12 +51,12 @@ public class Users {
         this.age = age;
     }
 
-    public Boolean getSex() {
-        return sex;
+    public String getAccount() {
+        return account;
     }
 
-    public void setSex(Boolean sex) {
-        this.sex = sex;
+    public void setAccount(String account) {
+        this.account = account == null ? null : account.trim();
     }
 
     public Integer getRoleId() {
@@ -59,5 +65,21 @@ public class Users {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
