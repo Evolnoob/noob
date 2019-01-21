@@ -32,7 +32,7 @@
     <div id="mnav">
         <h2><span class="navicon"></span></h2>
         <ul>
-            <li><a href="${ctx}/index/index">网站首页</a></li>
+            <li><a href="${ctx}/index">网站首页</a></li>
             <li><a href="${ctx}/mien/index>">关于我</a></li>
             <li><a href="${ctx}/forLove/index">告白墙</a></li>
             <li><a href="${ctx}/study/index">学无止境</a></li>
@@ -45,7 +45,7 @@
     <div class="topnav">
         <nav>
             <ul>
-                <li><a href="${ctx}/index/index">网站首页</a></li>
+                <li><a href="${ctx}/index">网站首页</a></li>
                 <li><a href="${ctx}/mien/index">关于我</a></li>
                 <li><a href="${ctx}/forLove/index">告白墙</a></li>
                 <li><a href="${ctx}/study/index">学无止境</a></li>

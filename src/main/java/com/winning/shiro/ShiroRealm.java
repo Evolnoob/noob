@@ -4,7 +4,6 @@ import com.winning.dao.RoleMapper;
 import com.winning.model.Role;
 import com.winning.model.Users;
 import com.winning.service.UsersService;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -16,8 +15,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.xml.registry.infomodel.User;
+import org.springframework.util.StringUtils;
 
 public class ShiroRealm extends AuthorizingRealm {
     private static final Logger LOGGER = LoggerFactory.getLogger(ShiroRealm.class);
@@ -60,6 +58,9 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         //获取登录用户名称
         String userName = authenticationToken.getPrincipal().toString();
+        if (userName == null || StringUtils.isEmpty(userName)) {
+            return null;
+        }
         Users users = new Users();
         users.setAccount(userName);
         Users user = usersService.getUser(users);

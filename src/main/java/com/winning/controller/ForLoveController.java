@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/forLove")
-public class ForLoveController {
+public class ForLoveController extends BaseController {
 	/**
 	 * 告白墙主页面
 	 * 
@@ -18,7 +18,7 @@ public class ForLoveController {
 	 */
 	@RequestMapping("/index")
 	public String index() {
-		return "forLove";
+		return "jsp/forLove";
 	}
 
 	/**
@@ -28,6 +28,6 @@ public class ForLoveController {
 	 */
 	@RequestMapping("/love")
 	public String love() {
-		return "love";
+		return "jsp/love";
 	}
 }

@@ -15,14 +15,13 @@ import java.util.Map;
  * @description 博客首页
  */
 @Controller
-@RequestMapping("/index")
 public class IndexController extends BaseController {
     @Autowired
     private UsersService usersService;
 
     @RequestMapping("/index")
     public String index() {
-        return "index";
+        return "jsp/index";
     }
 
     @RequestMapping("/text")

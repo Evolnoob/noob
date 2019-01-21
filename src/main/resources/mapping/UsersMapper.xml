@@ -134,28 +134,28 @@
         from users
         <where>
             <if test="id != null">
-                id=#{id},
+                id=#{id}
             </if>
             <if test="name != null">
-                name=#{name},
+                name=#{name}
             </if>
             <if test="sex != null">
-                sex=#{sex},
+                sex=#{sex}
             </if>
             <if test="age != null">
-                age=#{age},
+                age=#{age}
             </if>
             <if test="account != null">
-                account=#{account},
+                account=#{account}
             </if>
             <if test="roleId != null">
-                role_id=#{roleId},
+                role_id=#{roleId}
             </if>
             <if test="password != null">
-                password=#{password},
+                password=#{password}
             </if>
             <if test="createDate != null">
-                create_date=#{createDate},
+                create_date=#{createDate}
             </if>
         </where>
     </select>

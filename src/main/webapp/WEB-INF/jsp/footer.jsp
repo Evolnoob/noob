@@ -9,5 +9,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <footer>
-    <p>Design by <a href="${ctx}/index/index">陈枫个人博客</a> <a href="/"></a></p>
+    <p>Design by <a href="${ctx}/index">陈枫个人博客</a> <a href="/"></a></p>
 </footer>

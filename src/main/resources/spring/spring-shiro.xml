@@ -9,17 +9,18 @@
         <!-- 装配 securityManager -->
         <property name="securityManager" ref="securityManager"/>
         <!-- 配置登陆页面 -->
-        <property name="loginUrl" value="/index.jsp"/>
+        <property name="loginUrl" value="/login"/>
         <!-- 登陆成功后的一面 -->
-        <property name="successUrl" value="/jsp/success.jsp"/>
-        <property name="unauthorizedUrl" value="/jsp/unauthorized.jsp"/>
+        <property name="successUrl" value="/index"/>
+        <property name="unauthorizedUrl" value="/index.jsp"/>
         <!-- 具体配置需要拦截哪些 URL, 以及访问对应的 URL 时使用 Shiro 的什么 Filter 进行拦截.  -->
         <property name="filterChainDefinitions">
             <value>
                 /index.jsp=anon
                 /login.jsp=anon
-                /login=login
-                /resource/**=anon
+                /login=anon
+                /doLogin=anon
+                /resources/**=anon
                 /index= roles[admin]
                 /logout = logout
                 /**=user

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/mien")
-public class MienController {
+public class MienController extends BaseController {
     @RequestMapping("/index")
     public String index() {
-        return "mien";
+        return "jsp/mien";
     }
 }
