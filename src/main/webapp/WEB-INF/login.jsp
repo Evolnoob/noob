@@ -12,7 +12,8 @@
 <head>
     <title>登录页面</title>
     <link rel="stylesheet" href="${ctx}/resources/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="${ctx}/resources/common/icon/favicon.ico" />
+    <link rel="stylesheet" href="${ctx}/resources/assets/layer/theme/default/layer.css">
+    <link rel="shortcut icon" href="${ctx}/resources/common/icon/favicon.ico"/>
     <style type="text/css">
         html body {
             margin: 0;
@@ -63,21 +64,30 @@
 </body>
 <script type="text/javascript" src="${ctx}/resources/common/jquery/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/assets/layer/layer.js"></script>
 <script type="text/javascript">
 $(function () {
     //登录事件
     $("#login_btn").click(function () {
         //用户名
         let account = $("#account").val();
+        if (account == null || account == '') {
+            layer.alert('用户名不能为空！', {icon: 1,});
+            return;
+        }
         //密码
         let password = $("#password").val();
+        if (password == null || password == '') {
+            layer.alert('密码不能为空！', {icon: 1,});
+            return;
+        }
         $.ajax({
             url: '${ctx}/doLogin',
             type: 'post',
             data: {account: account, password: password},
             success: function (data) {
-                if(data.msg=="success"){
-                    window.location.href="${ctx}/index";
+                if (data.msg == "success") {
+                    window.location.href = "${ctx}/index";
                 }
             }
         });
