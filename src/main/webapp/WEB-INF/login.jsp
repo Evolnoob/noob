@@ -21,7 +21,7 @@
         }
 
         body {
-            background-image: url(${ctx}/resources/imgs/login_bg.jpg);
+            background-image: url("${ctx}/resources/imgs/login_bg.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;
             -moz-background-size: 100% 100%;
